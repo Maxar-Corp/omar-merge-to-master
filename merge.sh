@@ -15,66 +15,84 @@
 # Run this script from ossimlabs parent directory (a.k.a. OSSIM_DEV_HOME)
 #
 ###############################################################################
-
-
-# FUNCTION: do_git <repo_name> <cmd_line_arg_1> <cmd_line_arg_2> <cmd_line_arg_3> <cmd_line_arg_4>
-function do_git {
-  if [ -d $1 ]; then
-    echo;
-    echo "*************************** $(basename $1) ***************************"
-    echo "*************************** git $2 $3 $4 $5 $6 $7 $8 $9***************************"
-
-    pushd $1 > /dev/null
-    git $2 $3 $4 $5 $6 $7 $8 $9
-    popd > /dev/null
-    echo;
-  fi
-}
-export -f do_git
-
-# FUNCTION: usage <script_basename>
-function usage {
-  echo; echo "Runs specified git command across all ossimlabs repositories. Usage:"
-  echo; echo "  $1 <git-arg1> [<git-arg2> [<git-arg3>]]"
-  echo; echo "This script must be run from the ossimlabs parent directory."
-  echo; echo "Examples:"; echo
-  echo "  $1 status"
-  echo "  $1 log --oneline --graph"; echo
-  exit 0
+function checkoutFile {
+  repoUrl=$1
+  repo=$2
+  target=$3
+  #if [ ! -z $repoUrl -a ! -z $repo -a ! -z $target ] ; then
+    git clone $repoUrl/$repo $target
+  #else
+  #  echo "Usage: checkoutFile <repoUrl> <repo> <target>"
+  #  exit 1
+  #fi
 }
 
-# Check for incorrect usage:
-#if [ -z $1 ]; then
-#  usage `basename "$0"`
-#fi
-#export FILES=`find . -maxdepth 1 -type d -name "ossim*"`
-# Loop over all ossim repos in working dir:
-#do_git {} $*" \;
+function mergeToMaster {
+  FILES=$1
+ for file in $FILES ; do
+    if [ -e $file ] ; then
+      echo "************ PUSHING DIRECTORY $file ************"
+      pushd $file
+      git checkout dev
+      git pull --all
+      git checkout master
+      git pull --all
+      git merge -m "Merging dev into master" dev
+      git push
+      git checkout dev
+      popd
+    else
+      echo "************ Directory $file is not present. Skipping merge ************"
+    fi
+  done
+ 
+}
 
-export FILES=("cucumber-oc2s o2-paas omar ossim ossim-ci ossim-gui ossim-oms ossim-planet ossim-plugins ossim-private\
- ossim-vagrant ossim-video ossim-wms omar-avro omar-common omar-core omar-download omar-geoscript omar-ingest-metrics\
- omar-jpip omar-mensa omar-oldmar omar-oms omar-opir omar-ossimtools omar-raster omar-security omar-service-proxy\
+export OSSIMLABS_URL="https://github.com/ossimlabs"
+export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
+export RADIANTBLUE_FILES=("cucumber-oc2s o2-paas ossim-private")
+export OSSIMLABS_FILES=("omar ossim ossim-ci ossim-gui ossim-oms ossim-planet ossim-plugins \
+ ossim-vagrant ossim-video ossim-wms omar-avro omar-common omar-core omar-download omar-geoscript omar-hibernate-spatial omar-ingest-metrics\
+ omar-jpip omar-mensa  omar-oms omar-openlayers omar-opir omar-ossimtools omar-raster omar-security omar-service-proxy\
  omar-services omar-sqs omar-stager omar-superoverlay omar-ui omar-video omar-wcs omar-wfs omar-wms omar-wmts\
  three-disa tlv")
 
-for file in $FILES ; do
-  echo "************ PUSHING DIRECTORY $file ************"
-  pushd $file
-  git checkout dev
-  git pull --all
-  git checkout master
-  git pull --all
-  git merge -m "Merging dev into master" dev
-  git push
-  git checkout dev
-  popd
+echo "ABOUT TO CHECKOUT FILES"
+for file in $RADIANTBLUE_FILES ; do
+  if [ ! -e $file ] ; then
+    checkoutFile $RADIANTBLUE_URL $file  $file
+  fi
 done
 
-# Check OMAR as well...
-#if [ -d omar ]; then
-#  bash -c "do_git omar $*"
-#fi
+for file in $OSSIMLABS_FILES ; do
+  if [ ! -e $file ] ; then
+    checkoutFile $OSSIMLABS_URL $file $file
+  fi
+done
 
-#if [ -d o2-paas ]; then
-#  bash -c "do_git o2-paas $*"
-#fi
+if [ ! -e oldmar ] ; then
+    checkoutFile $RADIANTBLUE_URL omar oldmar
+fi
+
+
+mergeToMaster "${RADIANTBLUE_FILES[@]}"
+mergeToMaster "${OSSIMLABS_FILES[@]}"
+mergeToMaster "oldmar"
+
+
+# for file in $FILES ; do
+#   if [ -e $file ] ; then
+#     echo "************ PUSHING DIRECTORY $file ************"
+#     pushd $file
+#     git checkout dev
+#     git pull --all
+#     git checkout master
+#     git pull --all
+#     git merge -m "Merging dev into master" dev
+#     git push
+#     git checkout dev
+#     popd
+#   else
+#     echo "************ Directory $file is not present. Skipping merge ************"
+#   fi
+# done
