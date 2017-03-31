@@ -2,7 +2,7 @@ node {
    env.WORKSPACE=pwd()
    try{
        stage("Checkout"){
-           dir("ossim-ci") {
+           dir("merge-to-master") {
                git branch: "master", url: "https://github.com/radiantbluetechnologies/merge-to-master.git"
            }
        }
