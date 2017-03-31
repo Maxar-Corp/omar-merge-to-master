@@ -79,20 +79,3 @@ mergeToMaster "${RADIANTBLUE_FILES[@]}"
 mergeToMaster "${OSSIMLABS_FILES[@]}"
 mergeToMaster "oldmar"
 
-
-# for file in $FILES ; do
-#   if [ -e $file ] ; then
-#     echo "************ PUSHING DIRECTORY $file ************"
-#     pushd $file
-#     git checkout dev
-#     git pull --all
-#     git checkout master
-#     git pull --all
-#     git merge -m "Merging dev into master" dev
-#     git push
-#     git checkout dev
-#     popd
-#   else
-#     echo "************ Directory $file is not present. Skipping merge ************"
-#   fi
-# done
