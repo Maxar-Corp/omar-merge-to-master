@@ -5,7 +5,7 @@ We can use any directory name for the merge process but in this example we will 
 
 ### Steps
 1. Send e-mail to devs asking them not make any more code merges into dev until the merge is complete 
-2. `mkdir release` somewhere where you can copy the repos
+2. In a terminal window do a `mkdir release` somewhere where you can copy the repos
 3. `cd release`
 4. `git clone https://github.com/radiantbluetechnologies/merge-to-master`
 5. Run `./merge-to-master/merge.sh`
