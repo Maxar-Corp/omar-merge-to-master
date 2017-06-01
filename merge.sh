@@ -50,7 +50,7 @@ function mergeToMaster {
 
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
-export RADIANTBLUE_FILES=("cucumber-oc2s omar-merge-to-master o2-paas ossim-private")
+export RADIANTBLUE_FILES=("cucumber-oc2s isa omar-merge-to-master o2-paas ossim-msp ossim-private")
 export OSSIMLABS_FILES=("omar omar-docs omar-disk-cleanup omar-config-server omar-eureka-server omar-turbine-server omar-zuul-server omar-base omar-ossim-base ossim ossim-ci ossim-gui ossim-oms ossim-planet ossim-plugins \
  ossim-vagrant ossim-video ossim-wms omar-avro omar-common omar-core omar-download omar-geoscript omar-hibernate-spatial omar-ingest-metrics\
  omar-jpip omar-mensa  omar-oms omar-openlayers omar-opir omar-ossimtools omar-raster omar-security omar-service-proxy\
