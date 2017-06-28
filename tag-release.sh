@@ -2,7 +2,6 @@
 pushd `dirname $0` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
-
 . $SCRIPT_DIR/env.sh
 
 echo "ABOUT TO CHECKOUT FILES"
@@ -21,9 +20,3 @@ done
 if [ ! -e oldmar ] ; then
     checkoutFile $RADIANTBLUE_URL omar oldmar
 fi
-
-
-mergeToMaster "${RADIANTBLUE_FILES[@]}"
-mergeToMaster "${OSSIMLABS_FILES[@]}"
-mergeToMaster "oldmar"
-
