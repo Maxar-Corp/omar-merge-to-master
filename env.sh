@@ -3,6 +3,7 @@ pushd `dirname $0` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 export TAG_RELEASE="DaytonaBeach-2.0.0"
+export TAG_DESCRIPTION="Official Daytona Bech Release version 2.0.0"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
 export RADIANTBLUE_FILES=("omar-merge-to-master omar-elk-docker ossim_kakadu_jpip_server cucumber-oc2s isa o2-paas ossim-msp ossim-private")
@@ -14,6 +15,16 @@ export OSSIMLABS_FILES=("o2-delivery omar-git-mirror ossim-src omar omar-docs om
  omar-scdf-indexer omar-scdf-notifier-email omar-scdf-server omar-scdf-file-parser omar-scdf-downloader omar-scdf-s3-uploader omar-scdf-s3-filter \
  omar-scdf-s3-extractor-filter")
 
+JSON_DATA=$(cat  << EOF
+{"tag_name": "${TAG_RELEASE}", 
+"target_commitish":"master",
+"name":"${TAG_RELEASE}",
+"body":"${TAG_DESCRIPTION}", 
+"draft":false, 
+"prerelease":false
+}
+EOF
+)
 ###############################################################################
 #
 # got = git for OSSIM
@@ -62,3 +73,5 @@ function mergeToMaster {
   done
  
 }
+
+
