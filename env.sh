@@ -10,7 +10,7 @@ if [ -z $TAG_RELEASE_BRANCH ] ; then
   export TAG_RELEASE_BRANCH="master"
 fi
 
-export TAG_DESCRIPTION="Official Daytona Bech Release version 2.0.0"
+export TAG_DESCRIPTION="Official Daytona Beach Release version 2.0.0"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
 export RADIANTBLUE_FILES=("omar-merge-to-master omar-elk-docker ossim_kakadu_jpip_server cucumber-oc2s isa o2-paas ossim-msp ossim-private")
