@@ -2,7 +2,14 @@
 pushd `dirname $0` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
-export TAG_RELEASE="DaytonaBeach-2.0.0"
+if [ -z $TAG_RELEASE_NAME] ; then
+  export TAG_RELEASE_NAME="DaytonaBeach-2.0.0"
+fi
+
+if [ -z $TAG_RELEASE_BRANCH ] ; then
+  export TAG_RELEASE_BRANCH="master"
+fi
+
 export TAG_DESCRIPTION="Official Daytona Bech Release version 2.0.0"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
@@ -15,16 +22,23 @@ export OSSIMLABS_FILES=("o2-delivery omar-git-mirror ossim-src omar omar-docs om
  omar-scdf-indexer omar-scdf-notifier-email omar-scdf-server omar-scdf-file-parser omar-scdf-downloader omar-scdf-s3-uploader omar-scdf-s3-filter \
  omar-scdf-s3-extractor-filter")
 
+
 JSON_DATA=$(cat  << EOF
-{"tag_name": "${TAG_RELEASE}", 
-"target_commitish":"master",
-"name":"${TAG_RELEASE}",
+{"tag_name": "${TAG_RELEASE_NAME}", 
+"target_commitish":"${TAG_RELEASE_BRANCH}",
+"name":"${TAG_RELEASE_NAME}",
 "body":"${TAG_DESCRIPTION}", 
 "draft":false, 
 "prerelease":false
 }
 EOF
 )
+
+function extractId {
+ eval $1=`echo $2 |grep -o -m1 '"id"\:.*\,'|tr -cd '[:digit:],'|cut -d "," -f1 `
+}
+
+
 ###############################################################################
 #
 # got = git for OSSIM
