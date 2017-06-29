@@ -3,7 +3,7 @@ pushd `dirname $0` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 
-source $SCRIPT_DIR/env.sh
+. $SCRIPT_DIR/env.sh
 
 echo "ABOUT TO CHECKOUT FILES"
 for file in $RADIANTBLUE_FILES ; do

@@ -3,19 +3,51 @@ pushd `dirname $0` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 
-echo "ABOUT TO CHECKOUT FILES"
+. $SCRIPT_DIR/env.sh
+
+
+if [ -z $GITHUB_USER ] ; then
+   echo -n "Please enter github username: "
+   read GITHUB_USER
+fi
+
+if [ -z $GITHUB_PASSWORD ] ; then
+   echo -n "Please enter github password: "
+   read -s GITHUB_PASSWORD
+fi
+
+
+function repleaseRepo {
+   OWNER=$1
+   REPO=$2
+
+   if [ -z $OWNER ] ; then
+      echo "OWNER is empty and needs to be set."
+      exit 1     
+   fi
+   if [ -z $REPO ] ; then
+      echo "REPO is empty and needs to be set."
+      exit 1     
+   fi
+
+   exec curl -d "${JSON_DATA}" -u $GITHUB_USER:$GITHUB_PASSWORD -X POST "https://api.github.com/repos/${OWNER}/${REPO}/releases"
+
+}
+
+
 for file in $RADIANTBLUE_FILES ; do
   if [ ! -e $file ] ; then
-    checkoutFile $RADIANTBLUE_URL $file  $file
+    repleaseRepo radiantbluetechnologies $file
   fi
 done
 
 for file in $OSSIMLABS_FILES ; do
   if [ ! -e $file ] ; then
-    checkoutFile $OSSIMLABS_URL $file $file
+    repleaseRepo ossimlabs $file
   fi
 done
 
 if [ ! -e oldmar ] ; then
-    checkoutFile $RADIANTBLUE_URL omar oldmar
+    repleaseRepo radiantbluetechnologies omar
 fi
+
