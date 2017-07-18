@@ -13,7 +13,7 @@ fi
 export TAG_DESCRIPTION="Official Daytona Beach Release version 2.0.0"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
-export RADIANTBLUE_FILES=("omar-merge-to-master omar-elk-docker ossim_kakadu_jpip_server cucumber-oc2s isa o2-paas ossim-msp ossim-private")
+export RADIANTBLUE_FILES=("omar-merge-to-master omar-elk-docker ossim_kakadu_jpip_server cucumber-oc2s isa o2-paas ossim-msp ossim-private omar-web-proxy omar-pki-proxy")
 export OSSIMLABS_FILES=("o2-delivery omar-git-mirror ossim-src omar omar-docs omar-disk-cleanup omar-config-server omar-eureka-server omar-turbine-server omar-zuul-server omar-base omar-ossim-base ossim ossim-ci ossim-gui ossim-oms ossim-planet ossim-plugins \
  ossim-vagrant ossim-video ossim-wms omar-avro omar-avro-metadata omar-common omar-core omar-download omar-geoscript omar-hibernate-spatial omar-ingest-metrics\
  omar-jpip omar-mensa  omar-oms omar-openlayers omar-opir omar-ossimtools omar-raster omar-scdf-indexer omar-scdf-notifier-email omar-scdf-s3-extractor-filter omar-scdf-s3-filter omar-scdf-s3-uploader omar-scdf-stager omar-scdf-sqs omar-scdf-file-parser omar-scdf-downloader omar-scdf-aggregator omar-scdf-extractor omar-security omar-service-proxy\
