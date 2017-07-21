@@ -13,22 +13,91 @@ fi
 export TAG_DESCRIPTION="Official Daytona Beach Release version 2.0.0"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
-export RADIANTBLUE_FILES=("omar-merge-to-master omar-elk-docker ossim_kakadu_jpip_server cucumber-oc2s isa o2-paas ossim-msp ossim-private omar-web-proxy omar-pki-proxy")
-export OSSIMLABS_FILES=("o2-delivery omar-git-mirror ossim-src omar omar-docs omar-disk-cleanup omar-config-server omar-eureka-server omar-turbine-server omar-zuul-server omar-base omar-ossim-base ossim ossim-ci ossim-gui ossim-oms ossim-planet ossim-plugins \
- ossim-vagrant ossim-video ossim-wms omar-avro omar-avro-metadata omar-common omar-core omar-download omar-geoscript omar-hibernate-spatial omar-ingest-metrics\
- omar-jpip omar-mensa  omar-oms omar-openlayers omar-opir omar-ossimtools omar-raster omar-scdf-indexer omar-scdf-notifier-email omar-scdf-s3-extractor-filter omar-scdf-s3-filter omar-scdf-s3-uploader omar-scdf-stager omar-scdf-sqs omar-scdf-file-parser omar-scdf-downloader omar-scdf-aggregator omar-scdf-extractor omar-security omar-service-proxy\
- omar-services omar-sqs omar-stager omar-superoverlay omar-ui omar-video omar-wcs omar-wfs omar-oldmar omar-wms omar-wmts\
- tlv omar-scdf omar-scdf-stager omar-scdf-aggregator omar-scdf-sqs omar-scdf-extractor omar-scdf-zookeeper omar-scdf-kafka\
- omar-scdf-indexer omar-scdf-notifier-email omar-scdf-server omar-scdf-file-parser omar-scdf-downloader omar-scdf-s3-uploader omar-scdf-s3-filter \
- omar-scdf-s3-extractor-filter omar-scdf-image-info")
+export RADIANTBLUE_FILES=("cucumber-oc2s \
+ isa \
+ o2-paas \
+ omar-elk-docker \
+ omar-merge-to-master \
+ omar-pki-proxy \
+ omar-web-proxy \
+ ossim_kakadu_jpip_server \
+ ossim-msp \
+ ossim-private")
+export OSSIMLABS_FILES=("o2-delivery \
+ omar \
+ omar-avro \
+ omar-avro-metadata \
+ omar-base \
+ omar-basemap \
+ omar-common \
+ omar-config-server \
+ omar-core \
+ omar-disk-cleanup \
+ omar-docs \
+ omar-download \
+ omar-eureka-server \
+ omar-geoscript \
+ omar-git-mirror \
+ omar-hibernate-spatial \
+ omar-ingest-metrics \
+ omar-jpip \
+ omar-mensa \
+ omar-oms \
+ omar-openlayers \
+ omar-opir \
+ omar-ossim-base \
+ omar-ossimtools \
+ omar-raster \
+ omar-scdf \
+ omar-scdf-aggregator \
+ omar-scdf-downloader \
+ omar-scdf-extractor \
+ omar-scdf-file-parser \
+ omar-scdf-indexer \
+ omar-scdf-image-info
+ omar-scdf-kafka \
+ omar-scdf-notifier-email \
+ omar-scdf-s3-extractor-filter \
+ omar-scdf-s3-filter \
+ omar-scdf-server \
+ omar-scdf-stager \
+ omar-scdf-sqs \
+ omar-scdf-s3-uploader \
+ omar-scdf-zookeeper \
+ omar-turbine-server\
+ omar-oldmar \
+ omar-security \
+ omar-service-proxy \
+ omar-services \
+ omar-sqs \
+ omar-stager \
+ omar-superoverlay \
+ omar-ui \
+ omar-wcs \
+ omar-wfs \
+ omar-wms \
+ omar-wmts \
+ omar-video \
+ omar-zuul-server\
+ ossim \
+ ossim-ci \
+ ossim-gui \
+ ossim-oms \
+ ossim-planet \
+ ossim-plugins \
+ ossim-src \
+ ossim-vagrant \
+ ossim-video \
+ ossim-wms \
+ tlv")
 
 
 JSON_DATA=$(cat  << EOF
-{"tag_name": "${TAG_RELEASE_NAME}", 
+{"tag_name": "${TAG_RELEASE_NAME}",
 "target_commitish":"${TAG_RELEASE_BRANCH}",
 "name":"${TAG_RELEASE_NAME}",
-"body":"${TAG_DESCRIPTION}", 
-"draft":false, 
+"body":"${TAG_DESCRIPTION}",
+"draft":false,
 "prerelease":false
 }
 EOF
@@ -85,5 +154,5 @@ function mergeToMaster {
       echo "************ Directory $file is not present. Skipping merge ************"
     fi
   done
- 
+
 }
