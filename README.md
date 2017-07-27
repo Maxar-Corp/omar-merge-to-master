@@ -23,6 +23,6 @@ Note: The first three steps should be done in a forum when the entire group is p
 13. Create a local directory to copy the delivery items to from our s3 bucket: `mkdir ~/temp/master`
 14. Make sure you have the aws [cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) installed
 15. `cd ~/temp`
-16. Run the following from the terminal: `aws s3 sync  s3://o2-delivery/master master`. This will take a long time to complete.
-17. Burn the contents of master to a Blu-ray disk and take to the high side.
+16. Run the following from the terminal: `aws s3 sync  s3://o2-delivery/master master`. This will take a long time to complete. 
+17. Burn the contents of master to a Blu-ray disk and take to the high side. Note: You do not need to burn the jars... they take a long time to scan and are not used. 
 18. Delete build artifacts from artifactory.
