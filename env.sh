@@ -14,7 +14,7 @@ export TAG_DESCRIPTION="Official Daytona Beach Release version 2.0.0"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
 export RADIANTBLUE_FILES=("cucumber-oc2s \
- isa \
+ isa-ui \
  o2-paas \
  omar-elk-docker \
  omar-merge-to-master \
