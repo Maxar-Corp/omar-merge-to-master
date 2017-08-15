@@ -67,7 +67,7 @@ omar-oms-app \
 omar-superoverlay-app \
 omar-jpip-app \
 omar-opir-app \
-isa-app \
+isa-ui-app \
 omar-ui-app \
 tlv-app")
 # OMAR_APPS=("omar-wcs-app")
