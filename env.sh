@@ -32,6 +32,7 @@ export OSSIMLABS_FILES=("o2-delivery \
  omar-common \
  omar-config-server \
  omar-core \
+ omar-database \
  omar-disk-cleanup \
  omar-docs \
  omar-download \
