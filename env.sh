@@ -90,6 +90,8 @@ export OSSIMLABS_FILES=("o2-delivery \
  ossim-vagrant \
  ossim-video \
  ossim-wms \
+ ossim-rpm \
+ ossim-rpm-dependencies \
  tlv")
 
 
