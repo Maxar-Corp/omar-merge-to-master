@@ -27,6 +27,7 @@ export OSSIMLABS_FILES=("o2-delivery \
  omar \
  omar-avro \
  omar-avro-metadata \
+ omar-backend-tests \
  omar-base \
  omar-basemap \
  omar-common \
@@ -37,10 +38,12 @@ export OSSIMLABS_FILES=("o2-delivery \
  omar-docs \
  omar-download \
  omar-eureka-server \
+ omar-frontend-tests \
  omar-geoscript \
  omar-git-mirror \
  omar-hibernate-spatial \
  omar-ingest-metrics \
+ omar-ingest-tests \
  omar-jpip \
  omar-mensa \
  omar-oms \
