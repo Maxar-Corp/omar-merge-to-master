@@ -18,7 +18,6 @@ export RADIANTBLUE_FILES=("cucumber-oc2s \
  o2-paas \
  omar-elk-docker \
  omar-merge-to-master \
- omar-pki-proxy \
  omar-web-proxy \
  ossim_kakadu_jpip_server \
  ossim-msp \
@@ -78,6 +77,7 @@ export OSSIMLABS_FILES=("o2-delivery \
  omar-superoverlay \
  omar-ui \
  omar-wcs \
+ omar-web-proxy \
  omar-wfs \
  omar-wms \
  omar-wmts \
