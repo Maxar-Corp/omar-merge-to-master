@@ -18,7 +18,6 @@ export RADIANTBLUE_FILES=("cucumber-oc2s \
  o2-paas \
  omar-elk-docker \
  omar-merge-to-master \
- omar-web-proxy \
  ossim_kakadu_jpip_server \
  ossim-msp \
  ossim-private")
