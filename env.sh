@@ -43,6 +43,7 @@ export OSSIMLABS_FILES=("o2-delivery \
  omar-ingest-metrics \
  omar-ingest-tests \
  omar-jpip \
+ omar-mapproxy \
  omar-mensa \
  omar-oms \
  omar-openlayers \
@@ -66,6 +67,7 @@ export OSSIMLABS_FILES=("o2-delivery \
  omar-scdf-sqs \
  omar-scdf-s3-uploader \
  omar-scdf-zookeeper \
+ omar-twofishes \
  omar-turbine-server\
  omar-oldmar \
  omar-security \
