@@ -83,7 +83,8 @@ export OSSIMLABS_FILES=("o2-delivery \
  omar-wms \
  omar-wmts \
  omar-video \
- omar-zuul-server\
+ omar-zipkin-server \
+ omar-zuul-server \
  ossim \
  ossim-ci \
  ossim-gui \
