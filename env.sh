@@ -28,6 +28,8 @@ export OSSIMLABS_FILES=("o2-delivery \
  omar-backend-tests \
  omar-base \
  omar-basemap \
+ omar-cesium-terrain-builder \
+ omar-cesium-terrain-server \
  omar-common \
  omar-config-server \
  omar-core \
