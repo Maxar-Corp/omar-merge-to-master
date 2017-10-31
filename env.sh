@@ -23,6 +23,7 @@ export RADIANTBLUE_FILES=("cucumber-oc2s \
  ossim-private")
 export OSSIMLABS_FILES=("o2-delivery \
  omar \
+ omar-admin-server \
  omar-avro \
  omar-avro-metadata \
  omar-backend-tests \
