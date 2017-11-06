@@ -89,6 +89,7 @@ export OSSIMLABS_FILES=("o2-delivery \
  omar-zipkin-server \
  omar-zuul-server \
  ossim \
+ ossim-batch-test \
  ossim-ci \
  ossim-gui \
  ossim-oms \
