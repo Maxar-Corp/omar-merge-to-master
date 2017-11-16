@@ -3,14 +3,14 @@ pushd `dirname $0` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 if [ -z $TAG_RELEASE_NAME] ; then
-  export TAG_RELEASE_NAME="DaytonaBeach-2.0.0"
+  export TAG_RELEASE_NAME="EgmontKey-2.1.2"
 fi
 
 if [ -z $TAG_RELEASE_BRANCH ] ; then
   export TAG_RELEASE_BRANCH="master"
 fi
 
-export TAG_DESCRIPTION="Official Daytona Beach Release version 2.0.0"
+export TAG_DESCRIPTION="Official Egmont Key Release version 2.1.2"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
 export RADIANTBLUE_FILES=("isa-ui \
@@ -90,11 +90,11 @@ export OSSIMLABS_FILES=("omar \
  ossim \
  ossim-batch-test \
  ossim-ci \
+ ossim-csm-plugin \
  ossim-gui \
  ossim-oms \
  ossim-planet \
  ossim-plugins \
- ossim-src \
  ossim-vagrant \
  ossim-video \
  ossim-wms \
