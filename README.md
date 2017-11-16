@@ -9,7 +9,7 @@ Practice good communication with the entire team over Slack when executing these
 ### Steps
 Note: The first three steps should be done in a forum when the entire group is present. (i.e. sprint planning or daily SCRUM)
 1. Ask all team members if any new projects need to be added or old projects need to be remove from the `env.sh` file.  And for Pete's sake, try and keep them in alphabetical order!
-2. Ask all team members to ensure that repo version numbers have been changed appropriately.
+2. Ask all team members to ensure that repo version numbers have been changed appropriately and feature branches have been deleted.
 3. Ask all team members to ensure that repo docs have been updated taking into consideration any changes to the Dockerfile and configuration.
 4. Delete all duplicate artifacts in s3://o2-delivery/dev/jars and s3://o2-delivery/master/jars.  Keep the latest versions.  You don't have to delete the folders, just the artifacts to clean out old versions of things.
 5. Go through the previous sprint's tickets and transcribe any high level features and/or bugs to the release notes in `ossimlabs/omar-docs/docs/index.md`.
