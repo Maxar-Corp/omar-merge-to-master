@@ -20,6 +20,7 @@ export RADIANTBLUE_FILES=("cucumber-oc2s \
  omar-merge-to-master \
  ossim_kakadu_jpip_server \
  ossim-isa \
+ ossim-isa-plugin \
  ossim-private")
 export OSSIMLABS_FILES=("o2-delivery \
  omar \
