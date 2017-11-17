@@ -21,6 +21,7 @@ Note: The first three steps should be done in a forum when the entire group is p
 11. Run `./omar-merge-to-master/merge.sh`. You will notice a flurry of activity in Jenkins as all the master branches are being built. This will take quite a while and many of the pipelines trigger other pipelines resulting in "duplicate/redundant" builds. If you are short on time, keep an eye on them and abort anything that already has another build scheduled in the queue. Wait until the activity subsides before proceeding.
 12. Log into Openshift (https://openshift-master.ossim.io:8443/console) and make sure there are no red pods.
 13. Poke around and kick the tires on the new release to identify any configuration issues or other bugs that need to be resolved. It's not your responsibility to make sure everything works, use your best judgement.
+14. Run cucumber tests. (And make sure they pass too)
 14. Announce on Slack that commits to dev branches can be resumed.
 15. Run the o2-delivery-master pipeline on Jenkins: https://jenkins.ossim.io/job/o2-delivery-master/
 16. Create a local directory to copy the delivery items to from our s3 bucket: `mkdir ~/temp/master`
