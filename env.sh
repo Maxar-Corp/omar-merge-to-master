@@ -71,7 +71,6 @@ export OSSIMLABS_FILES=("omar \
  omar-scdf-zookeeper \
  omar-twofishes \
  omar-turbine-server\
- omar-oldmar \
  omar-security \
  omar-service-proxy \
  omar-services \
