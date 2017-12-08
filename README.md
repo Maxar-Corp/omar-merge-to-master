@@ -9,10 +9,10 @@ Practice good communication with the entire team over Slack when executing these
 ### Steps
 1. Stay calm... At times this can get a little hairy and overwhelming, especially when things break. You are not responsible for doing every little thing. You are able to call on anyone at any time for help. You are in charge here, delegation is your friend. 
 Note: The next three steps should be done in a forum when the entire group is present. (i.e. sprint planning or daily SCRUM)
-2. Ask all team members if any new projects need to be added or old projects need to be remove from the `env.sh` file.  And for Pete's sake, try and keep them in alphabetical order!
+2. Ask all team members if any new projects need to be added or old projects need to be removed from the `env.sh` file.  And for Pete's sake, try and keep them in alphabetical order!
 3. Ask all team members to ensure that repo version numbers have been changed appropriately and feature branches have been deleted.
 4. Ask all team members to ensure that repo docs have been updated.
-5. Delete ALL artifacts in s3://o2-delivery/dev/jars and s3://o2-delivery/master/jars. You don't have to delete the folders.
+5. Delete ALL artifacts in s3://o2-delivery/dev/ and s3://o2-delivery/master/. You don't have to delete the folders.
 6. Generate the release notes for the previous sprint. Put them in `ossimlabs/omar-docs/docs/index.md`.
 7. Announce on Slack that code commits to dev branches should be halted until further notice.
 8. In a terminal window do a `mkdir release` somewhere where you can copy the repos.
