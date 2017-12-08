@@ -25,6 +25,7 @@ Note: The next three steps should be done in a forum when the entire group is pr
 15. Run cucumber tests. (And make sure they pass too)
 16. Announce on Slack that commits to dev branches can be resumed.
 17. Run the o2-delivery-master pipeline on Jenkins: https://jenkins.ossim.io/job/o2-delivery-master/
+18. Update env.sh with new release name and version. Run tagRelease.sh
 18. Create a local directory to copy the delivery items to from our s3 bucket: `mkdir ~/temp/master`
 19. Make sure you have the aws [cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) installed
 20. `cd ~/temp`
