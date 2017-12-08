@@ -18,7 +18,7 @@ Note: The next three steps should be done in a forum when the entire group is pr
 8. In a terminal window do a `mkdir release` somewhere where you can copy the repos.
 9. `cd release`
 10. `git clone https://github.com/radiantbluetechnologies/omar-merge-to-master`
-11. Make sure any changes made to the \*-dev.yml files in the config repo is added to the \*-rel.yml versions.
+11. Make sure any changes made to the \*-dev.yml files in the config repo is added to the \*-rel.yml versions. In addition, update the omar-ui yaml in config-repo for the new umbrella version (i.e. Fort Myers 2.2.0).
 12. Run `./omar-merge-to-master/merge.sh`. You will notice a flurry of activity in Jenkins as all the master branches are being built. This will take quite a while and many of the pipelines trigger other pipelines resulting in "duplicate/redundant" builds. If you are short on time, keep an eye on them and abort anything that already has another build scheduled in the queue. Wait until the activity subsides before proceeding.
 13. Log into Openshift (https://openshift-master.ossim.io:8443/console) and make sure there are no red pods. You just want to make sure everything comes up cleanly after the merge. Make sure all the new services from dev are present in rel.
 14. Poke around and kick the tires on the new release to identify any configuration issues or other bugs that need to be resolved. It's not your responsibility to make sure everything works, use your best judgement.
