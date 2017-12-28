@@ -91,6 +91,7 @@ export OSSIMLABS_FILES=("omar \
  ossim-ci \
  ossim-csm-plugin \
  ossim-gui \
+ ossim-jpip-server \
  ossim-oms \
  ossim-planet \
  ossim-plugins \
