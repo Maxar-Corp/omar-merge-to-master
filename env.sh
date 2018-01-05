@@ -47,6 +47,7 @@ export OSSIMLABS_FILES=("omar \
  omar-jpip \
  omar-mapproxy \
  omar-mensa \
+ omar-oldmar \
  omar-oms \
  omar-openlayers \
  omar-opir \
