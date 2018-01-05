@@ -15,7 +15,6 @@ export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
 export RADIANTBLUE_FILES=("isa-ui \
  o2-paas \
- omar-elk-docker \
  omar-merge-to-master \
  ossim_kakadu_jpip_server \
  ossim-isa \
