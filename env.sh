@@ -3,14 +3,14 @@ pushd `dirname $0` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 if [ -z $TAG_RELEASE_NAME] ; then
-  export TAG_RELEASE_NAME="EgmontKey-2.1.2"
+  export TAG_RELEASE_NAME="FortMyers-2.2.1"
 fi
 
 if [ -z $TAG_RELEASE_BRANCH ] ; then
   export TAG_RELEASE_BRANCH="master"
 fi
 
-export TAG_DESCRIPTION="Official Egmont Key Release version 2.1.2"
+export TAG_DESCRIPTION="Official FortMyers Release version 2.2.1"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
 export RADIANTBLUE_FILES=("isa-ui \
