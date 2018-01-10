@@ -18,12 +18,12 @@ for file in $OSSIMLABS_FILES ; do
   fi
 done
 
-if [ ! -e oldmar ] ; then
-    checkoutFile $RADIANTBLUE_URL omar oldmar
-fi
+#if [ ! -e oldmar ] ; then
+#    checkoutFile $RADIANTBLUE_URL omar oldmar
+#fi
 
 
 mergeToMaster "${RADIANTBLUE_FILES[@]}"
 mergeToMaster "${OSSIMLABS_FILES[@]}"
-mergeToMaster "oldmar"
+#mergeToMaster "oldmar"
 

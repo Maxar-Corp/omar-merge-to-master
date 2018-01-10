@@ -3,19 +3,18 @@ pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 if [ -z $TAG_RELEASE_NAME] ; then
-  export TAG_RELEASE_NAME="EgmontKey-2.1.2"
+  export TAG_RELEASE_NAME="FortMyers-2.2.1"
 fi
 
 if [ -z $TAG_RELEASE_BRANCH ] ; then
   export TAG_RELEASE_BRANCH="master"
 fi
 
-export TAG_DESCRIPTION="Official Egmont Key Release version 2.1.2"
+export TAG_DESCRIPTION="Official FortMyers Release version 2.2.1"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
 export RADIANTBLUE_FILES=("isa-ui \
  o2-paas \
- omar-elk-docker \
  omar-merge-to-master \
  ossim_kakadu_jpip_server \
  ossim-isa \
@@ -47,6 +46,7 @@ export OSSIMLABS_FILES=("omar \
  omar-jpip \
  omar-mapproxy \
  omar-mensa \
+ omar-oldmar \
  omar-oms \
  omar-openlayers \
  omar-opir \
@@ -91,6 +91,7 @@ export OSSIMLABS_FILES=("omar \
  ossim-ci \
  ossim-csm-plugin \
  ossim-gui \
+ ossim-jpip-server \
  ossim-oms \
  ossim-planet \
  ossim-plugins \
