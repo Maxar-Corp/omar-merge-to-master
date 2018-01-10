@@ -1,5 +1,5 @@
 #!/bin/bash
-pushd `dirname $0` >/dev/null
+pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 if [ -z $TAG_RELEASE_NAME] ; then
@@ -19,7 +19,7 @@ export RADIANTBLUE_FILES=("isa-ui \
  omar-merge-to-master \
  ossim_kakadu_jpip_server \
  ossim-isa \
- ossim-isa-plugin \
+ ossim-msp-plugin \
  ossim-private")
 export OSSIMLABS_FILES=("omar \
  omar-admin-server \
