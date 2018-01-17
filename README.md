@@ -24,6 +24,7 @@ Note: The next three steps should be done in a forum when the entire group is pr
 13. Log into Openshift (https://openshift-master.ossim.io:8443/console) and make sure there are no red pods. You just want to make sure everything comes up cleanly after the merge. Make sure all the new services from dev are present in rel.
 14. Poke around and kick the tires on the new release to identify any configuration issues or other bugs that need to be resolved. It's not your responsibility to make sure everything works, use your best judgement.
 15. Run cucumber tests. (And make sure they pass too)
+16. Run the JMeter tests. (And make sure those also pass, see a pattern?)
 16. Announce on Slack that commits to dev branches can be resumed.
 17. Run the o2-delivery-master pipeline on Jenkins: https://jenkins.ossim.io/job/o2-delivery-master/
 18. Update env.sh with new release name and version. Run tagRelease.sh
