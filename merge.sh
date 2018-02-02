@@ -1,5 +1,5 @@
 #!/bin/bash
-pushd `dirname $0` >/dev/null
+pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 
@@ -18,12 +18,12 @@ for file in $OSSIMLABS_FILES ; do
   fi
 done
 
-if [ ! -e oldmar ] ; then
-    checkoutFile $RADIANTBLUE_URL omar oldmar
-fi
+#if [ ! -e oldmar ] ; then
+#    checkoutFile $RADIANTBLUE_URL omar oldmar
+#fi
 
 
 mergeToMaster "${RADIANTBLUE_FILES[@]}"
 mergeToMaster "${OSSIMLABS_FILES[@]}"
-mergeToMaster "oldmar"
+#mergeToMaster "oldmar"
 
