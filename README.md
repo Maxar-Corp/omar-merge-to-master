@@ -12,7 +12,8 @@ Note: The next three steps should be done in a forum when the entire group is pr
 2. Ask all team members if any new projects need to be added or old projects need to be removed from the `env.sh` file.  And for Pete's sake, try and keep them in alphabetical order!
 3. Ask all team members to ensure that repo version numbers have been changed appropriately and feature branches have been deleted.
 4. Ask all team members to ensure that repo docs have been updated.
-5. Delete ALL artifacts in s3://o2-delivery/dev/ and s3://o2-delivery/master/. You don't have to delete the folders.
+5. Delete ALL artifacts in s3://o2-delivery/dev/jars and s3://o2-delivery/master/jars. You don't have to delete the folders.
+ - run in omar-merge-to-master: ./deleteS3Artifacts.sh master
 6. Generate the release notes for the previous sprint. Put them in `ossimlabs/omar-docs/docs/index.md`.
 6. Make sure all the dev builds and tests are green
 7. Announce on Slack that code commits to dev branches should be halted until further notice.
