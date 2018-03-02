@@ -3,7 +3,7 @@ if [ -z $1 ] ; then
  echo "Need to specify a tag.  Example:  $0 dev or $0 master"
  exit 1
 fi
-COMMAND="aws s3 rm --recursive s3://o2-delivery/$1" 
+COMMAND="aws s3 rm --recursive s3://o2-delivery/$1"
 
 
 ${COMMAND}/docker
@@ -15,3 +15,4 @@ ${COMMAND}/src
 
 
 
+# Comment should go here

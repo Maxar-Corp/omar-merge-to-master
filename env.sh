@@ -3,7 +3,7 @@ pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 if [ -z $TAG_RELEASE_NAME] ; then
-  export TAG_RELEASE_NAME="FortMyers-2.2.2"
+  export TAG_RELEASE_NAME="Gasparilla-2.3.0"
 fi
 
 if [ -z $TAG_RELEASE_BRANCH ] ; then
@@ -13,15 +13,18 @@ fi
 export TAG_DESCRIPTION="Official FortMyers Release version 2.2.2"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
-export RADIANTBLUE_FILES=("isa-ui \
+export RADIANTBLUE_FILES=(
+"isa-ui \
  oc2s-metrics-dashboards \
  o2-paas \
  omar-merge-to-master \
  ossim_kakadu_jpip_server \
  ossim-isa \
  ossim-msp-plugin \
+ ngt-service \
  ossim-private")
-export OSSIMLABS_FILES=("omar \
+export OSSIMLABS_FILES=(
+"omar \
  omar-admin-server \
  omar-avro \
  omar-avro-metadata \

@@ -7,13 +7,13 @@ We can use any directory name for the merge process but in this example we will 
 Practice good communication with the entire team over Slack when executing these steps. Be precise and thorough explaining what major steps are about to be taken, noting anything that goes wrong. It's not always easy, but it's always worth it.
 
 ### Steps
-1. Stay calm... At times this can get a little hairy and overwhelming, especially when things break. You are not responsible for doing every little thing. You are able to call on anyone at any time for help. You are in charge here, delegation is your friend. 
+1. Stay calm... At times this can get a little hairy and overwhelming, especially when things break. You are not responsible for doing every little thing. You are able to call on anyone at any time for help. You are in charge here, delegation is your friend.
 Note: The next three steps should be done in a forum when the entire group is present. (i.e. sprint planning or daily SCRUM)
 2. Ask all team members if any new projects need to be added or old projects need to be removed from the `env.sh` file.  And for Pete's sake, try and keep them in alphabetical order!
 3. Ask all team members to ensure that repo version numbers have been changed appropriately and feature branches have been deleted.
 4. Ask all team members to ensure that repo docs have been updated.
 5. Delete ALL artifacts in s3://o2-delivery/dev/jars and s3://o2-delivery/master/jars. You don't have to delete the folders.
- - run in omar-merge-to-master: ./deleteS3Artifacts.sh master
+ - run in omar-merge-to-master: `./deleteS3Artifacts.sh master`
 6. Generate the release notes for the previous sprint. Put them in `ossimlabs/omar-docs/docs/index.md`.
 6. Make sure all the dev builds and tests are green
 7. Announce on Slack that code commits to dev branches should be halted until further notice.
