@@ -11,11 +11,11 @@ function releaseRepo {
 
    if [ -z $OWNER ] ; then
       echo "OWNER is empty and needs to be set."
-      exit 1     
+      exit 1
    fi
    if [ -z $REPO ] ; then
       echo "REPO is empty and needs to be set."
-      exit 1     
+      exit 1
    fi
 
 
@@ -23,15 +23,17 @@ function releaseRepo {
 }
 
 for file in $RADIANTBLUE_FILES ; do
-  if [ ! -e $file ] ; then
+  # if [ ! -e $file ] ; then
+    echo "Release $file"
     releaseRepo radiantbluetechnologies $file
-  fi
+  # fi
 done
 
 for file in $OSSIMLABS_FILES ; do
-  if [ ! -e $file ] ; then
+  # if [ ! -e $file ] ; then
+    echo "Release $file"
     releaseRepo ossimlabs $file
-  fi
+  # fi
 done
 
 releaseRepo radiantbluetechnologies omar
