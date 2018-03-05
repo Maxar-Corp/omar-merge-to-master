@@ -15,25 +15,25 @@ Note: The next three steps should be done in a forum when the entire group is pr
 5. Delete ALL artifacts in s3://o2-delivery/dev/jars and s3://o2-delivery/master/jars. You don't have to delete the folders.
  - run in omar-merge-to-master: `./deleteS3Artifacts.sh master`
 6. Generate the release notes for the previous sprint. Put them in `ossimlabs/omar-docs/docs/index.md` and push them to dev.
-6. Make sure all the dev builds and tests are green
-7. Announce on Slack that code commits to dev branches should be halted until further notice.
-8. In a terminal window do a `mkdir release` somewhere where you can copy the repos.
-9. `cd release`
-10. `git clone https://github.com/radiantbluetechnologies/omar-merge-to-master`
-11. Make sure any changes made to the `\*-dev.yml` files in the config repo is added to the `\*-rel.yml` versions. In addition, update the omar-ui yaml in config-repo for the new umbrella version (i.e. Fort Myers 2.2.0). Push any changes to dev.
-12. Run `./omar-merge-to-master/merge.sh`. You will notice a flurry of activity in Jenkins as all the master branches are being built. This will take quite a while and many of the pipelines trigger other pipelines resulting in "duplicate/redundant" builds. If you are short on time, keep an eye on them and abort anything that already has another build scheduled in the queue. Wait until the activity subsides before proceeding. Check the proxy configs defined in the config-maps on the omar-dev project are ported to the omar-rel project.  We need to modify the reverse-proxy in omar-web-proxy to make sure its ported in git.
-13. Log into Openshift (https://openshift-master.ossim.io:8443/console) and make sure there are no red pods. You just want to make sure everything comes up cleanly after the merge. Make sure all the new services from dev are present in rel.
-14. Poke around and kick the tires on the new release to identify any configuration issues or other bugs that need to be resolved. It's not your responsibility to make sure everything works, use your best judgement.
-15. Run cucumber tests (ingest, backend, and frontend). (And make sure they pass too)
-16. Run the JMeter tests. (And make sure those also pass, see a pattern?)
-16. Announce on Slack that commits to dev branches can be resumed.
-17. Run the o2-delivery-master pipeline on Jenkins: https://jenkins.ossim.io/job/o2-delivery-master/
-18. Update env.sh with new release name and version. Update the TAG_DESCRIPTION with new release and version. Run tagRelease.sh
-18. Create a local directory to copy the delivery items to from our s3 bucket: `mkdir ~/temp/master`
-19. Make sure you have the aws [cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) installed and the credential pair keys set up to access S3 buckets. Contact admin for the accessKey ID and Secret Key and do "aws s3 configure" to configure the keys (the region should be "us-east-1"). Test connection with "aws s3 ls" where you should be able to see the list of S3 buckets.
-20. `cd ~/temp`
-21. Run the following from the terminal: `aws s3 sync s3://o2-delivery/master master`. This will take a long time to complete.
-22. Burn the contents of master to a Blu-ray disk and take to the high side. Note: You do not need to burn the jars... they take a long time to scan and are not used.
-23. Log into artifactory (see https://intranet.radiantblue.com/tools/confluence/display/OC2S/Artifactory)
-24. Go to https://artifactory.ossim.io/artifactory/webapp/#/builds/ and delete builds.
-25. Push any merge-to-master changes to dev.
+7. Make sure all the dev builds and tests are green
+8. Announce on Slack that code commits to dev branches should be halted until further notice.
+9. In a terminal window do a `mkdir release` somewhere where you can copy the repos.
+10. `cd release`
+11. `git clone https://github.com/radiantbluetechnologies/omar-merge-to-master`
+12. Make sure any changes made to the `\*-dev.yml` files in the config repo is added to the `\*-rel.yml` versions. In addition, update the omar-ui yaml in config-repo for the new umbrella version (i.e. Fort Myers 2.2.0). Push any changes to dev.
+13. Run `./omar-merge-to-master/merge.sh`. You will notice a flurry of activity in Jenkins as all the master branches are being built. This will take quite a while and many of the pipelines trigger other pipelines resulting in "duplicate/redundant" builds. If you are short on time, keep an eye on them and abort anything that already has another build scheduled in the queue. Wait until the activity subsides before proceeding. Check the proxy configs defined in the config-maps on the omar-dev project are ported to the omar-rel project.  We need to modify the reverse-proxy in omar-web-proxy to make sure its ported in git.
+14. Log into Openshift (https://openshift-master.ossim.io:8443/console) and make sure there are no red pods. You just want to make sure everything comes up cleanly after the merge. Make sure all the new services from dev are present in rel.
+15. Poke around and kick the tires on the new release to identify any configuration issues or other bugs that need to be resolved. It's not your responsibility to make sure everything works, use your best judgement.
+16. Run cucumber tests (ingest, backend, and frontend). (And make sure they pass too)
+17. Run the JMeter tests. (And make sure those also pass, see a pattern?)
+18. Announce on Slack that commits to dev branches can be resumed.
+19. Run the o2-delivery-master pipeline on Jenkins: https://jenkins.ossim.io/job/o2-delivery-master/
+20. Update env.sh with new release name and version. Update the TAG_DESCRIPTION with new release and version. Run tagRelease.sh
+21. Create a local directory to copy the delivery items to from our s3 bucket: `mkdir ~/temp/master`
+22. Make sure you have the aws [cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) installed and the credential pair keys set up to access S3 buckets. Contact admin for the accessKey ID and Secret Key and do "aws s3 configure" to configure the keys (the region should be "us-east-1"). Test connection with "aws s3 ls" where you should be able to see the list of S3 buckets.
+23. `cd ~/temp`
+24. Run the following from the terminal: `aws s3 sync s3://o2-delivery/master master`. This will take a long time to complete.
+25. Burn the contents of master to a Blu-ray disk and take to the high side. Note: You do not need to burn the jars... they take a long time to scan and are not used.
+26. Log into artifactory (see https://intranet.radiantblue.com/tools/confluence/display/OC2S/Artifactory)
+27. Go to https://artifactory.ossim.io/artifactory/webapp/#/builds/ and delete builds.
+28. Push any merge-to-master changes to dev.
