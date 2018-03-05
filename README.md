@@ -30,7 +30,7 @@ Note: The next three steps should be done in a forum when the entire group is pr
 17. Run the o2-delivery-master pipeline on Jenkins: https://jenkins.ossim.io/job/o2-delivery-master/
 18. Update env.sh with new release name and version. Update the TAG_DESCRIPTION with new release and version. Run tagRelease.sh
 18. Create a local directory to copy the delivery items to from our s3 bucket: `mkdir ~/temp/master`
-19. Make sure you have the aws [cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) installed
+19. Make sure you have the aws [cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) installed and the credential pair keys set up to access S3 buckets. Contact admin for the accessKey ID and Secret Key and do "aws s3 configure" to configure the keys (the region should be "us-east-1"). Test connection with "aws s3 ls" where you should be able to see the list of S3 buckets.
 20. `cd ~/temp`
 21. Run the following from the terminal: `aws s3 sync s3://o2-delivery/master master`. This will take a long time to complete.
 22. Burn the contents of master to a Blu-ray disk and take to the high side. Note: You do not need to burn the jars... they take a long time to scan and are not used.
