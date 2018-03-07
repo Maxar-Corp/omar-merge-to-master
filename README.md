@@ -14,7 +14,7 @@ Note: The next three steps should be done in a forum when the entire group is pr
 4. Ask all team members to ensure that repo docs have been updated.
 5. Delete ALL artifacts in s3://o2-delivery/dev/jars and s3://o2-delivery/master/jars. You don't have to delete the folders.
  - run in omar-merge-to-master: `./deleteS3Artifacts.sh master`
-6. Generate the release notes for the previous sprint. Put them in `ossimlabs/omar-docs/docs/index.md` and push them to dev.
+6. Generate the release notes for the previous sprint by copying the generated change log from the sprint's Change log Confluence page and putting them in `ossimlabs/omar-docs/docs/index.md`. Run the format_release.s script (to format index.md) and push them to dev.
 7. Make sure all the dev builds and tests are green
 8. Announce on Slack that code commits to dev branches should be halted until further notice.
 9. In a terminal window do a `mkdir release` somewhere where you can copy the repos.
