@@ -21,7 +21,6 @@ export RADIANTBLUE_FILES=(
  ossim_kakadu_jpip_server \
  ossim-isa \
  ossim-msp-plugin \
- ngt-service \
  ossim-private")
 export OSSIMLABS_FILES=(
 "omar \
