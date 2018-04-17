@@ -30,8 +30,6 @@ export OSSIMLABS_FILES=(
  omar-backend-tests \
  omar-base \
  omar-basemap \
- omar-cesium-terrain-builder \
- omar-cesium-terrain-server \
  omar-common \
  omar-config-server \
  omar-core \
