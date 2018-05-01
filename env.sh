@@ -3,14 +3,14 @@ pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 if [ -z $TAG_RELEASE_NAME] ; then
-  export TAG_RELEASE_NAME="Gasparilla-2.3.1"
+  export TAG_RELEASE_NAME="Gasparilla-2.3.2"
 fi
 
 if [ -z $TAG_RELEASE_BRANCH ] ; then
   export TAG_RELEASE_BRANCH="master"
 fi
 
-export TAG_DESCRIPTION="Official Gasparilla Release version 2.3.1"
+export TAG_DESCRIPTION="Official Gasparilla Release version 2.3.2"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
 export RADIANTBLUE_FILES=(
@@ -30,6 +30,7 @@ export OSSIMLABS_FILES=(
  omar-backend-tests \
  omar-base \
  omar-basemap \
+ omar-cmdln \
  omar-common \
  omar-config-server \
  omar-core \
