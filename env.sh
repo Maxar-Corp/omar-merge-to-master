@@ -62,7 +62,6 @@ export OSSIMLABS_FILES=(
  omar-scdf-file-parser \
  omar-scdf-indexer \
  omar-scdf-image-info
- omar-scdf-kafka \
  omar-scdf-notifier-email \
  omar-scdf-s3-extractor-filter \
  omar-scdf-s3-filter \
@@ -70,7 +69,6 @@ export OSSIMLABS_FILES=(
  omar-scdf-stager \
  omar-scdf-sqs \
  omar-scdf-s3-uploader \
- omar-scdf-zookeeper \
  omar-twofishes \
  omar-turbine-server\
  omar-security \
