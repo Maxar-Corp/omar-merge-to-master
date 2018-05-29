@@ -3,14 +3,14 @@ pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 SCRIPT_DIR=`pwd -P`
 popd >/dev/null
 if [ -z $TAG_RELEASE_NAME] ; then
-  export TAG_RELEASE_NAME="Gasparilla-2.3.2"
+  export TAG_RELEASE_NAME="Hollywood-2.4.0"
 fi
 
 if [ -z $TAG_RELEASE_BRANCH ] ; then
   export TAG_RELEASE_BRANCH="master"
 fi
 
-export TAG_DESCRIPTION="Official Gasparilla Release version 2.3.2"
+export TAG_DESCRIPTION="Official Hollywood Release version 2.4.0"
 export OSSIMLABS_URL="https://github.com/ossimlabs"
 export RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
 export RADIANTBLUE_FILES=(
@@ -65,6 +65,7 @@ export OSSIMLABS_FILES=(
  omar-scdf-notifier-email \
  omar-scdf-s3-extractor-filter \
  omar-scdf-s3-filter \
+ omar-scdf-s3-source \
  omar-scdf-server \
  omar-scdf-stager \
  omar-scdf-sqs \
