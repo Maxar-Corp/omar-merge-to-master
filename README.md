@@ -9,37 +9,37 @@ Practice good communication with the entire team over Slack when executing these
 ### Steps
 1. Stay calm... At times this can get a little hairy and overwhelming, especially when things break. You are not responsible for doing every little thing. You are able to call on anyone at any time for help. You are in charge here, delegation is your friend.
 
-2. Clone a fresh copy of the `omar-merge-to-master` repo.
+2. Ask all team members if any new projects need to be added or old projects need to be removed from the `omar-merge-to-master/env.sh` file.  And for Pete's sake, try and keep them in alphabetical order!
+
+3. Ask all team members to ensure that repo docs have been updated.
+
+4. Make sure all the Jenkins dev builds and tests are green. If they are not, work with the team to make whatever changes are necessary. Do not proceed until all builds and tests are green.
+
+5. Generate the release notes for the previous sprint. Put them in `ossimlabs/omar-docs/docs/index.md` and push them to dev.
+   * Copy the previous sprint's release notes page in confluence to the current sprint.
+   * Edit the page and modify the table logic to look at the current sprint's tickets.
+
+6. Announce on Slack...
+```
+    @channel DEV is FROZEN until further notice! Until such time, commits to dev branches need to be approved by the "Merge Master" or have two-person integrity.
+```
+
+7. Make sure any changes made to the `\*-dev.yml` files in the `config repo` are added to the `\*-rel.yml` versions. In addition, update the `omar-ui.yml` and `tlv.yml` in config-repo for the new umbrella version (i.e. Fort Myers 2.2.0).
+
+8. Clone a fresh copy of the `omar-merge-to-master` repo.
 ```
     mkdir release
     cd release
     git clone https://github.com/radiantbluetechnologies/omar-merge-to-master
 ```
 
-3. Ask all team members if any new projects need to be added or old projects need to be removed from the `omar-merge-to-master/env.sh` file.  And for Pete's sake, try and keep them in alphabetical order! _Note: This step should be done in a forum when the entire group is present. (i.e. sprint planning or daily SCRUM)_
-
-4. Ask all team members to ensure that repo docs have been updated. _Note: This step should be done in a forum when the entire group is present. (i.e. sprint planning or daily SCRUM)_
-
-5. Announce on Slack...
-```
-    @channel DEV is FROZEN until further notice! Until such time, commits to dev branches need to be approved by the "Merge Master" or have two-person integrity.
-```
-
-6. Make sure all the Jenkins dev builds and tests are green. If they are not, work with the team to make whatever changes are necessary. Do not proceed until all builds and tests are green.
-
-7. Delete ALL artifacts in s3://o2-delivery/dev and s3://o2-delivery/master.
+9. Delete ALL artifacts in s3://o2-delivery/dev and s3://o2-delivery/master.
 ```
     ./deleteS3Artifacts.sh dev
     ./deleteS3Artifacts.sh master
 ```
 
-8. Generate the release notes for the previous sprint. Put them in `ossimlabs/omar-docs/docs/index.md` and push them to dev.
-   * Copy the previous sprint's release notes page in confluence to the current sprint.
-   * Edit the page and modify the table logic to look at the current sprint's tickets.
-
-9. Make sure any changes made to the `\*-dev.yml` files in the `config repo` are added to the `\*-rel.yml` versions. In addition, update the `omar-ui.yml` and `tlv.yml` in config-repo for the new umbrella version (i.e. Fort Myers 2.2.0).
-
-10. Log-in to [Openshift > omar-dev > Resources > Config Maps > web-proxy-conf](https://openshift-master.ossim.io:8443/console/project/omar-dev/browse/config-maps/web-proxy-conf) and copy the configs into the same place in the omar-rel project.
+10. Log-in to [Openshift > omar-dev > Resources > Config Maps > web-proxy-conf](https://openshift-master.ossim.io:8443/console/project/omar-dev/browse/config-maps/web-proxy-conf) and copy the reverse-proxy.conf into the same place in the omar-rel project.
 
 11. Merge dev into master.
 ```
