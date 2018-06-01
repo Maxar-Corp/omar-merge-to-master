@@ -18,7 +18,7 @@ Practice good communication with the entire team over Slack when executing these
 
 3. Ask all team members if any new projects need to be added or old projects need to be removed from the `omar-merge-to-master/env.sh` file.  And for Pete's sake, try and keep them in alphabetical order! _Note: This step should be done in a forum when the entire group is present. (i.e. sprint planning or daily SCRUM)_
 
-:collision: _Propose consolidating this repository into ossim-ci since some files in that repo will also need the repo list available in env.sh. Also propose a more descriptive name for the file containing the important list of repos._
+:collision: _Propose consolidating this repository into ossim-ci since some files in that repo will also need the repo list available in env.sh. (This means also moving ossim-ci to our private RBT github, which it probably should be anyway). Also propose a more descriptive name for the file containing the important list of repos._
 
 4. Ask all team members to ensure that repo docs have been updated. _Note: This step should be done in a forum when the entire group is present. (i.e. sprint planning or daily SCRUM)_
 
