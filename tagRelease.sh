@@ -51,6 +51,10 @@ if [ -z "$RELEASE_NAME" ] || [ -z "$VERSION_TAG" ]; then
    exit 1
 fi
 TAG_RELEASE_NAME=${RELEASE_NAME}-${VERSION_TAG}
+echo RELEASE_NAME = $RELEASE_NAME
+echo VERSION_TAG = $VERSION_TAG
+echo TAG_RELEASE_NAME = $TAG_RELEASE_NAME
+setGitJsonData
 
 for repo in $RADIANTBLUE_REPOS ; do
   # if [ ! -e $repo ] ; then
