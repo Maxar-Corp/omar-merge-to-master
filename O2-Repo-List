@@ -1,0 +1,90 @@
+RADIANTBLUE_REPOS=(
+"isa-ui \
+ oc2s-metrics-dashboards \
+ o2-paas \
+ omar-merge-to-master \
+ ossim_kakadu_jpip_server \
+ ossim-isa \
+ ossim-msp-plugin \
+ ossim-private")
+
+OSSIMLABS_REPOS=(
+"omar \
+ omar-admin-server \
+ omar-avro \
+ omar-avro-metadata \
+ omar-backend-tests \
+ omar-base \
+ omar-basemap \
+ omar-cmdln \
+ omar-common \
+ omar-config-server \
+ omar-core \
+ omar-database \
+ omar-disk-cleanup \
+ omar-docs \
+ omar-download \
+ omar-eureka-server \
+ omar-frontend-tests \
+ omar-geoscript \
+ omar-git-mirror \
+ omar-hibernate-spatial \
+ omar-ingest-metrics \
+ omar-ingest-tests \
+ omar-jpip \
+ omar-mapproxy \
+ omar-mensa \
+ omar-oldmar \
+ omar-oms \
+ omar-openlayers \
+ omar-opir \
+ omar-ossim-base \
+ omar-ossimtools \
+ omar-raster \
+ omar-scdf \
+ omar-scdf-aggregator \
+ omar-scdf-downloader \
+ omar-scdf-extractor \
+ omar-scdf-file-parser \
+ omar-scdf-indexer \
+ omar-scdf-image-info
+ omar-scdf-notifier-email \
+ omar-scdf-s3-extractor-filter \
+ omar-scdf-s3-filter \
+ omar-scdf-server \
+ omar-scdf-stager \
+ omar-scdf-sqs \
+ omar-scdf-s3-uploader \
+ omar-twofishes \
+ omar-turbine-server\
+ omar-security \
+ omar-service-proxy \
+ omar-services \
+ omar-sqs \
+ omar-sqs-stager \
+ omar-stager \
+ omar-superoverlay \
+ omar-ui \
+ omar-wcs \
+ omar-web-proxy \
+ omar-wfs \
+ omar-wms \
+ omar-wmts \
+ omar-video \
+ omar-zipkin-server \
+ omar-zuul-server \
+ ossim \
+ ossim-batch-test \
+ ossim-ci \
+ ossim-csm-plugin \
+ ossim-gui \
+ ossim-jpip-server \
+ ossim-oms \
+ ossim-planet \
+ ossim-plugins \
+ ossim-vagrant \
+ ossim-video \
+ ossim-wms \
+ ossim-rpm \
+ ossim-rpm-dependencies \
+ tlv")

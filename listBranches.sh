@@ -1,15 +1,14 @@
 #!/bin/bash
 pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
-SCRIPT_DIR=`pwd -P`
+. ./env.sh
 popd >/dev/null
 
-. $SCRIPT_DIR/env.sh
 
 if [ -e branches.txt ] ; then
     rm branches.txt
 fi
 
-for repo in $RADIANTBLUE_FILES ; do
+for repo in $RADIANTBLUE_REPOS ; do
   if [ -e $repo ] ; then
     cd $repo
     git for-each-ref --format="%(authorname) %09 $repo %09 %(refname) %09 %(committerdate)" | grep remotes | grep -v origin/HEAD | grep -v origin/dev | grep -v origin/master >> ../branches.txt
@@ -17,7 +16,7 @@ for repo in $RADIANTBLUE_FILES ; do
   fi
 done
 
-for repo in $OSSIMLABS_FILES ; do
+for repo in $OSSIMLABS_REPOS ; do
   if [ -e $repo ] ; then
       cd $repo
       git for-each-ref --format="%(authorname) %09 $repo %09 %(refname) %09 %(committerdate)" | grep remotes | grep -v origin/HEAD | grep -v origin/dev | grep -v origin/master >> ../branches.txt >> ../branches.txt
