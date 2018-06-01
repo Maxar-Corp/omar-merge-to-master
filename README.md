@@ -1,7 +1,7 @@
 # omar-merge-to-master
 A collection of scripts and documentation (this) to perform an end-of-sprint merge of the git dev branches to master. Here is also described the process for deploying the results of the merge to openshift 
 
-:collision:_Modifications here in support of the new quad deployment model (dev, stage, blue, green) are in italics. Obsolete instructions are ~~struck~~.
+:collision:_Modifications here in support of the new quad deployment model (dev, stage, blue, green) are in italics. Obsolete instructions are ~~struck~~._
 
 ### Best Practices
 Practice good communication with the entire team over Slack when executing these steps. Be precise and thorough explaining what major steps are about to be taken, noting anything that goes wrong. It's not always easy, but it's always worth it.
