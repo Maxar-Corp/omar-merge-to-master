@@ -20,8 +20,22 @@ pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 . ./env.sh
 popd >/dev/null
 
-echo RELEASE_NAME = $RELEASE_NAME
-echo VERSION_TAG = $VERSION_TAG
+JSON_DATA=""
+
+#-------------------------------------------------------------------------------------
+
+function setGitJsonData {
+   JSON_DATA=$(cat  << EOF
+   {"tag_name": "${TAG_RELEASE_NAME}",
+   "target_commitish":"${TAG_RELEASE_BRANCH}",
+   "name":"${TAG_RELEASE_NAME}",
+   "body":"${TAG_DESCRIPTION}",
+   "draft":false,
+   "prerelease":false
+   }
+   EOF
+   )
+}
 
 #-------------------------------------------------------------------------------------
 

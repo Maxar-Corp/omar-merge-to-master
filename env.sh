@@ -3,29 +3,12 @@
 # Must be regularly maintained:
 . ./O2-Repo-List
 
-JSON_DATA=""
-
 if [ -z $TAG_RELEASE_BRANCH ] ; then
   TAG_RELEASE_BRANCH="master"
 fi
 if [ -z $TAG_DESCRIPTION ] ; then
   TAG_DESCRIPTION="NOT PROVIDED"
 fi
-
-#-------------------------------------------------------------------------------------
-
-function setGitJsonData {
-   JSON_DATA=$(cat  << EOF
-   {"tag_name": "${TAG_RELEASE_NAME}",
-   "target_commitish":"${TAG_RELEASE_BRANCH}",
-   "name":"${TAG_RELEASE_NAME}",
-   "body":"${TAG_DESCRIPTION}",
-   "draft":false,
-   "prerelease":false
-   }
-   EOF
-   )
-}
 
 #-------------------------------------------------------------------------------------
 
