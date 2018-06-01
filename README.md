@@ -1,7 +1,7 @@
 # omar-merge-to-master
 A collection of scripts and documentation (this) to perform an end-of-sprint merge of the git dev branches to master. Here is also described the process for deploying the results of the merge to openshift 
 
-:collision:_Modifications here in support of the new quad deployment model (dev, stage, blue, green) are in italics. Obsolete instructions are ~~struck~~._
+:collision: _Modifications here in support of the new quad deployment model (dev, stage, blue, green) are in italics. Obsolete instructions are ~~struck~~._
 
 ### Best Practices
 Practice good communication with the entire team over Slack when executing these steps. Be precise and thorough explaining what major steps are about to be taken, noting anything that goes wrong. It's not always easy, but it's always worth it.
@@ -18,7 +18,7 @@ Practice good communication with the entire team over Slack when executing these
 
 3. Ask all team members if any new projects need to be added or old projects need to be removed from the `omar-merge-to-master/env.sh` file.  And for Pete's sake, try and keep them in alphabetical order! _Note: This step should be done in a forum when the entire group is present. (i.e. sprint planning or daily SCRUM)_
 
-:collision:_Propose consolidating this repository into ossim-ci since some files scripts in that repo will also need to repo list available in env.sh. Also propose a more descriptive name for the file containing the important list of repos._
+:collision: _Propose consolidating this repository into ossim-ci since some files in that repo will also need the repo list available in env.sh. Also propose a more descriptive name for the file containing the important list of repos._
 
 4. Ask all team members to ensure that repo docs have been updated. _Note: This step should be done in a forum when the entire group is present. (i.e. sprint planning or daily SCRUM)_
 
