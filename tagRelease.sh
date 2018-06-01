@@ -25,6 +25,7 @@ popd >/dev/null
 function releaseRepo {
    ACCOUNT=$1
    REPO=$2
+   echo "JSON_DATA:--------------";echo ${JSON_DATA}; echo "--------------";
    curl -d "${JSON_DATA}" -u $GITHUB_USERNAME:$GITHUB_PASSWORD -X POST "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases"
 }
 
