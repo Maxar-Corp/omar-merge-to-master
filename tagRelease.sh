@@ -20,6 +20,9 @@ pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 . ./env.sh
 popd >/dev/null
 
+echo RELEASE_NAME = $RELEASE_NAME
+echo VERSION_TAG = $VERSION_TAG
+
 #-------------------------------------------------------------------------------------
 
 function releaseRepo {
