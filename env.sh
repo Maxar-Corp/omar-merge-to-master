@@ -52,7 +52,7 @@ function checkGitURLsAndCreds {
    fi
 
    # Prompt if needed, and only if interactive shell:
-   if [ ! -t 1 ] ; then
+   if [ -t 1 ] ; then
       if [ -z "$GITHUB_USERNAME" ]; then
          read -p "Github username: " GITHUB_USERNAME
       fi

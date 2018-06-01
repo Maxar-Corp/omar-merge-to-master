@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Uncomment following line to debug script line by line:
+#set -x; trap read debug
+
 pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 . ./env.sh
 popd >/dev/null
