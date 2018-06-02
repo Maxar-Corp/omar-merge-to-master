@@ -15,10 +15,6 @@ function deleteReleaseRepo {
   local DATA=$(curl -s -u ${GITHUB_USERNAME}:${GITHUB_PASSWORD} -X GET https://api.github.com/repos/${ACCOUNT}/${REPO}/releases)
   extractId RELEASE_ID "$DATA"
 
-  echo "DATA = $DATA"
-  echo "RELEASE_ID = $RELEASE_ID"
-  echo
-
   curl -u $GITHUB_USERNAME:$GITHUB_PASSWORD -X DELETE "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases/${RELEASE_ID}"
   curl -u $GITHUB_USERNAME:$GITHUB_PASSWORD -X DELETE "https://api.github.com/repos/${ACCOUNT}/${REPO}/git/refs/tags/${TAG_RELEASE_NAME}"
 }
