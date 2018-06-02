@@ -26,12 +26,12 @@ JSON_DATA=""
 
 function setGitJsonData {
    JSON_DATA=$(echo   \
-   { "tag_name": "${TAG_RELEASE_NAME}",\
-     "target_commitish":"${TAG_RELEASE_BRANCH}",\
-     "name":"${TAG_RELEASE_NAME}",\
-     "body":"${TAG_DESCRIPTION}",\
-     "draft":false,\
-     "prerelease":false\
+   { \"tag_name\": \"${TAG_RELEASE_NAME}\",\
+     \"target_commitish\":\"${TAG_RELEASE_BRANCH}\",\
+     \"name\":\"${TAG_RELEASE_NAME}\",\
+     \"body\":\"${TAG_DESCRIPTION}\",\
+     \"draft\":false,\
+     \"prerelease\":false\
    })
 }
 
