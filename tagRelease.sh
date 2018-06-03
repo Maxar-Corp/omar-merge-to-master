@@ -11,8 +11,6 @@
 #   GITHUB_USERNAME
 #   GITHUB_PASSWORD
 #
-#
-
 # Uncomment following line to debug script line by line:
 #set -x; trap read debug
 

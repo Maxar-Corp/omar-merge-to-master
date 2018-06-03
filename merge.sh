@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Performs merge of dev to master branch for all O2 git repositories.
+
 pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 . ./env.sh
 popd >/dev/null

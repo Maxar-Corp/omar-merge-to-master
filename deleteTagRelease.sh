@@ -1,7 +1,17 @@
 #!/bin/bash
+#
+# Deletes tag from all O2 Github repositories.
+# Expected in environment:
+#
+#    TAG_RELEASE_NAME
+#
+#  Will be prompted if not provided:
+#    GITHUB_USERNAME
+#    GITHUB_PASSWORD
 
 # Uncomment following line to debug script line by line:
 #set -x; trap read debug
+
 
 pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 . ./env.sh
