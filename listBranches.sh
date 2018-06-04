@@ -1,6 +1,6 @@
 #!/bin/bash
 pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
-. ./env.sh
+. ./O2-Repo-List.sh
 popd >/dev/null
 
 

@@ -14,10 +14,6 @@
 # Uncomment following line to debug script line by line:
 #set -x; trap read debug
 
-pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
-. ./env.sh
-popd >/dev/null
-
 JSON_DATA=""
 
 #-------------------------------------------------------------------------------------
@@ -44,7 +40,10 @@ function releaseRepo {
 
 #-------------------- MAIN SCRIPT SECTION ---------------------------------------
 
-checkGitURLsAndCreds
+pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
+. ./O2-Repo-List.sh
+. ./checkGitURLsAndCreds.sh
+popd >/dev/null
 
 # Prompt if needed, and only if interactive shell:
 if [ -t 1 ] ; then
@@ -55,11 +54,11 @@ if [ -t 1 ] ; then
       read -p "Enter release number: " VERSION_TAG
    fi
 fi
-
 if [ -z "$RELEASE_NAME" ] || [ -z "$VERSION_TAG" ]; then
    echo; echo "ERROR: Release name or version tag must be provided. Aborting. "; echo
    exit 1
 fi
+
 TAG_RELEASE_NAME=${RELEASE_NAME}-${VERSION_TAG}
 echo RELEASE_NAME = $RELEASE_NAME
 echo VERSION_TAG = $VERSION_TAG

@@ -14,8 +14,15 @@
 
 
 pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
-. ./env.sh
+SCRIPT_DIR=`pwd`
+. ./O2-Repo-List.sh
 popd >/dev/null
+
+#-------------------------------------------------------------------------------------
+
+function extractId {
+ eval $1=`echo $2 |grep -o -m1 '"id"\:.*\,'|tr -cd '[:digit:],'|cut -d "," -f1 `
+}
 
 #-------------------------------------------------------------------------------------
 
