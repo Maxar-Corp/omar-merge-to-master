@@ -59,9 +59,9 @@ RELEASE_NAME=$NEXT_RELEASE_NAME
 VERSION_TAG=$NEXT_VERSION_TAG
 checkReleaseInfo
 
-runCommand git clone $GIT_PRIVATE_SERVER_URL_WITH_CREDS/config-repo
-runCommand git checkout dev
+runCommand git clone $GIT_PRIVATE_SERVER_URL_WITH_CREDS/config-repo.git
 pushd config-repo
+runCommand git checkout dev
 
 # Verify we are on the dev branch of the config repo:
 appFileName="application.yml"
