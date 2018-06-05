@@ -55,6 +55,8 @@ if [ ! -d "$CONFIG_REPO" ] ; then
 fi
 
 checkGitURLsAndCreds
+RELEASE_NAME=$NEXT_RELEASE_NAME
+VERSION_TAG=$NEXT_VERSION_TAG
 checkReleaseInfo
 
 # Verify we are on the dev branch of the config repo:
