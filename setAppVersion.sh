@@ -3,9 +3,11 @@
 # Modifies the application.yml file in the local config-repo to reflect the new release. The
 # change is commited and pushed to the dev branch of the github repository.
 # If run from Jenkins script, expect:
-#     RELEASE_NAME
-#     VERSION_TAG
+#     NEXT_RELEASE_NAME
+#     NEXT_VERSION_TAG
 #     CONFIG_REPO
+#     GIT_PUBLIC_SERVER_URL
+#     GIT_PRIVATE_SERVER_URL
 #     GITHUB_USERNAME
 #     GITHUB_PASSWORD
 
@@ -40,8 +42,8 @@ while [ $# -gt 0 ]; do
    case $1 in
       --config-repo) CONFIG_REPO=$2 ; shift ;;
       -h|--help) usage ;;
-      --release-name) RELEASE_NAME=${2} ; shift ;;
-      -t|--tag) VERSION_TAG=${2} ; shift ;;
+      --release-name) NEXT_RELEASE_NAME=${2} ; shift ;;
+      -t|--tag) NEXT_VERSION_TAG=${2} ; shift ;;
       --) break ;;
       -*|--*) echo "$0: ERROR - unrecognized option $1" 1>&2; usage ;;
    esac
@@ -71,10 +73,10 @@ rm -f $tempFilename
 while IFS='' read -r line || [[ -n "$line" ]]; do
    words=($line)
    if [ "${words[0]}" == "releaseName:" ]; then
-      line="releaseName: ${RELEASE_NAME}"
+      line="releaseName: ${NEXT_RELEASE_NAME}"
       echo "$line"
    elif [ "${words[0]}" == "releaseNumber:" ]; then
-      line="releaseNumber: ${VERSION_TAG}"
+      line="releaseNumber: ${NEXT_VERSION_TAG}"
       echo "$line"
    fi
    echo "${line}" >> $tempFilename
@@ -85,7 +87,7 @@ mv $tempFilename $appFileName
 git add $appFileName
 git commit -m "$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}"
 git push origin
-rm -f $tempFilename
+
 popd
 echo; echo "Done.";echo
 exit 0
