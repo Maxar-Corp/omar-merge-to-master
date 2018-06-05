@@ -1,6 +1,18 @@
 #!/bin/bash
 
 #-------------------------------------------------------------------------------------
+# Runs shell command and exits on error
+
+function runCommand {
+  echo;echo "> $*"
+  eval $*
+  if [ $? != 0 ] ; then
+    echo "ERROR: Failed while executing command: <$*>."
+    echo; exit 1;
+  fi
+}
+
+#-------------------------------------------------------------------------------------
 
 function checkGitURLsAndCreds {
 #
@@ -11,6 +23,8 @@ function checkGitURLsAndCreds {
 #     GIT_PRIVATE_SERVER_URL
 #     GITHUB_USERNAME
 #     GITHUB_PASSWORD
+#     GIT_PUBLIC_SERVER_URL_WITH_CREDS
+#     GIT_PRIVATE_SERVER_URL_WITH_CREDS
 
    local OSSIMLABS_URL="https://github.com/ossimlabs"
    local RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
@@ -32,6 +46,14 @@ function checkGitURLsAndCreds {
          read -s -p "Github password: " GITHUB_PASSWORD
          echo
       fi
+   fi
+
+   # Create the URL with credentials embedded:
+   GIT_PUBLIC_SERVER_URL_WITH_CREDS=$GIT_PUBLIC_SERVER_URL
+   GIT_PRIVATE_SERVER_URL_WITH_CREDS=$GIT_PRIVATE_SERVER_URL
+   if [ -n "$GITHUB_USERNAME" ] && [ -n "$GITHUB_PASSWORD" ]; then
+      GIT_PUBLIC_SERVER_URL_WITH_CREDS=`echo $GIT_PUBLIC_SERVER_URL | sed "s/https:\/\//https:\/\/${GITHUB_USERNAME}:${GITHUB_PASSWORD}@/"`
+      GIT_PRIVATE_SERVER_URL_WITH_CREDS=`echo $GIT_PRIVATE_SERVER_URL | sed "s/https:\/\//https:\/\/${GITHUB_USERNAME}:${GITHUB_PASSWORD}@/"`
    fi
 }
 

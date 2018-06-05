@@ -66,7 +66,7 @@ if [ ! -f "$appFileName" ] ; then
   echo; echo "ERROR: The config-repo directory does not contain $appFileName. Aborting."; echo
   exit 1
 fi
-git checkout dev
+runCommand git checkout dev
 
 # Perform the line substitution in the file (no actual YAML parsing):
 echo; echo "Updated:"
@@ -85,10 +85,10 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 done < "$appFileName"
 echo
 
-mv $tempFilename $appFileName
-git add $appFileName
-git commit -m "$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}"
-git push origin
+runCommand mv $tempFilename $appFileName
+runCommand git add $appFileName
+runCommand git commit -m "$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}"
+runCommand git push $GIT_PRIVATE_SERVER_URL_WITH_CREDS
 
 popd
 echo; echo "Done.";echo
