@@ -87,7 +87,7 @@ echo
 
 runCommand mv $tempFilename $appFileName
 runCommand git add $appFileName
-runCommand git commit -m "$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}"
+runCommand git commit -m \"$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}\"
 runCommand git push $GIT_PRIVATE_SERVER_URL_WITH_CREDS
 
 popd
