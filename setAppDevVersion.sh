@@ -49,26 +49,24 @@ while [ $# -gt 0 ]; do
    esac
    shift
 done
-#if [ ! -d "$CONFIG_REPO" ] ; then
-#  echo; echo "ERROR: The config-repo directory provided does not exist. Aborting."; echo
-#  exit 1
-#fi
+if [ ! -d "$CONFIG_REPO" ] ; then
+  echo; echo "ERROR: The config-repo directory provided does not exist. Aborting."; echo
+  exit 1
+fi
+
 checkGitURLsAndCreds
 RELEASE_NAME=$NEXT_RELEASE_NAME
 VERSION_TAG=$NEXT_VERSION_TAG
 checkReleaseInfo
 
-
-runCommand git clone $GIT_PRIVATE_SERVER_URL/config-repo.git
-pushd config-repo
-runCommand git checkout dev
-
 # Verify we are on the dev branch of the config repo:
+pushd $CONFIG_REPO
 appFileName="application.yml"
 if [ ! -f "$appFileName" ] ; then
   echo; echo "ERROR: The config-repo directory does not contain $appFileName. Aborting."; echo
   exit 1
 fi
+runCommand git checkout dev
 
 # Perform the line substitution in the file (no actual YAML parsing):
 echo; echo "Updated:"
@@ -89,8 +87,10 @@ echo "whoami: $(whoami)"
 
 runCommand mv $tempFilename $appFileName
 runCommand git add $appFileName
+runCommand git config --global user.name $GITHUB_USERNAME
 runCommand git commit -m \"$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}\"
-runCommand git push $GIT_PRIVATE_SERVER_URL/config-repo
+runCommand git push
+
 popd
 echo; echo "Done.";echo
 exit 0
