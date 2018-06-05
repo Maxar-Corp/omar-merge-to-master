@@ -93,7 +93,7 @@ runCommand mv $tempFilename $appFileName
 runCommand git add $appFileName
 #runCommand git config --global user.name $GITHUB_USERNAME
 runCommand git commit -m \"$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}\"
-runCommand git push $GIT_PRIVATE_SERVER_URL_WITH_CREDS/config-repo dev
+#runCommand git push $GIT_PRIVATE_SERVER_URL_WITH_CREDS/config-repo dev
 
 popd
 echo; echo "Done.";echo
