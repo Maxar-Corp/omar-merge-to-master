@@ -28,6 +28,8 @@ function checkGitURLsAndCreds {
 
    local OSSIMLABS_URL="https://github.com/ossimlabs"
    local RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
+   echo "C GITHUB_USERNAME = $GITHUB_USERNAME"
+   echo "C GITHUB_PASSWORD = $GITHUB_PASSWORD"
 
    # Use Jenkins-provided values if available, otherwise use those provided here
    if [ -z "$GIT_PUBLIC_SERVER_URL" ]; then
