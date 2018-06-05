@@ -53,13 +53,14 @@ done
 #  echo; echo "ERROR: The config-repo directory provided does not exist. Aborting."; echo
 #  exit 1
 #fi
-
+https://github.com/radiantbluetechnologies/config-repo.git
 checkGitURLsAndCreds
 RELEASE_NAME=$NEXT_RELEASE_NAME
 VERSION_TAG=$NEXT_VERSION_TAG
 checkReleaseInfo
 
-runCommand git clone $GIT_PRIVATE_SERVER_URL_WITH_CREDS/config-repo.git
+
+runCommand git clone $GIT_PRIVATE_SERVER_URL/config-repo.git
 pushd config-repo
 runCommand git checkout dev
 
@@ -90,7 +91,7 @@ echo "whoami: $(whoami)"
 runCommand mv $tempFilename $appFileName
 runCommand git add $appFileName
 runCommand git commit -m \"$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}\"
-runCommand git push $GIT_PRIVATE_SERVER_URL_WITH_CREDS/config-repo
+runCommand git push $GIT_PRIVATE_SERVER_URL/config-repo
 popd
 echo; echo "Done.";echo
 exit 0
