@@ -53,7 +53,6 @@ done
 #  echo; echo "ERROR: The config-repo directory provided does not exist. Aborting."; echo
 #  exit 1
 #fi
-https://github.com/radiantbluetechnologies/config-repo.git
 checkGitURLsAndCreds
 RELEASE_NAME=$NEXT_RELEASE_NAME
 VERSION_TAG=$NEXT_VERSION_TAG
