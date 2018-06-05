@@ -25,9 +25,10 @@ for item in r['repositories']:
 #-------------------------------------------------------------------------------------
 
 pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
-. ./checkGitURLsAndCreds.sh
+. ./common.sh
 popd >/dev/null
 
+checkGitURLsAndCreds
 
 rbt_repos_json=`curl -s -u $GITHUB_USERNAME:$GITHUB_PASSWORD "https://api.github.com/orgs/radiantbluetechnologies/repos?type='all',per_page=500"`
 RBT_REPOS=("`echo "$rbt_repos_json" | python -c "$pythonScript"`")

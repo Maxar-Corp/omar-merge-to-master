@@ -38,7 +38,10 @@ function cloneRepo {
 
 pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 . ./O2-Repo-List.sh
+. ./common.sh
 popd >/dev/null
+
+checkGitURLsAndCreds
 
 echo "ABOUT TO CHECKOUT REPOS"
 for repo in $RADIANTBLUE_REPOS ; do

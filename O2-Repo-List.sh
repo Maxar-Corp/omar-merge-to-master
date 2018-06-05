@@ -1,4 +1,5 @@
 RADIANTBLUE_REPOS=("\
+config-repo \
 isa-ui \
 oc2s-metrics-dashboards \
 o2-paas \
