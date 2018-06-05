@@ -49,10 +49,10 @@ while [ $# -gt 0 ]; do
    esac
    shift
 done
-if [ ! -d "$CONFIG_REPO" ] ; then
-  echo; echo "ERROR: The config-repo directory provided does not exist. Aborting."; echo
-  exit 1
-fi
+#if [ ! -d "$CONFIG_REPO" ] ; then
+#  echo; echo "ERROR: The config-repo directory provided does not exist. Aborting."; echo
+#  exit 1
+#fi
 
 checkGitURLsAndCreds
 RELEASE_NAME=$NEXT_RELEASE_NAME
