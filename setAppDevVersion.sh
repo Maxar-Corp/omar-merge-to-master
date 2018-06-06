@@ -75,10 +75,10 @@ rm -f $tempFilename
 while IFS='' read -r line || [[ -n "$line" ]]; do
    words=($line)
    if [ "${words[0]}" == "releaseName:" ]; then
-      line="releaseName: ${NEXT_RELEASE_NAME}"
+      line="releaseName: ${RELEASE_NAME}"
       echo "$line"
    elif [ "${words[0]}" == "releaseNumber:" ]; then
-      line="releaseNumber: ${NEXT_VERSION_TAG}"
+      line="releaseNumber: ${VERSION_TAG}"
       echo "$line"
    fi
    echo "${line}" >> $tempFilename
