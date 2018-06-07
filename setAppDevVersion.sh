@@ -75,6 +75,7 @@ if [ ! -f "$appFileName" ] ; then
    fi
 fi
 runCommand git checkout dev
+runCommand git pull
 
 # Perform the line substitution in the file (no actual YAML parsing):
 echo; echo "Updated:"
@@ -91,7 +92,6 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
    fi
    echo "${line}" >> $tempFilename
 done < "$appFileName"
-echo "whoami: $(whoami)"
 
 runCommand mv $tempFilename $appFileName
 runCommand git add $appFileName
