@@ -1,8 +1,13 @@
 # OC tag script for OMAR apps
 #
+# .
 # Author: cdowin
 # Date: 7/26/17
 #!/bin/bash
+echo
+echo "This script has been superceded by o2-paas/openshift/deployment/tag-images.sh."
+echo
+exit 1
 
 # Get the command line arguments
 while [[ $# -gt 0 ]]
@@ -46,7 +51,8 @@ do
 done
 
 #The static list of OMAR apps to tag or untag
-OMAR_APPS=("omar-oldmar-app \
+OMAR_APPS=("\
+omar-oldmar-app \
 omar-wcs-app \
 omar-wfs-app \
 omar-wms-app \
@@ -70,7 +76,7 @@ omar-opir-app \
 isa-ui-app \
 omar-ui-app \
 tlv-app")
-# OMAR_APPS=("omar-wcs-app")
+
 #ossim-msp-service \
 
 ## Help function
