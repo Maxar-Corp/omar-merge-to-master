@@ -66,6 +66,7 @@ function checkReleaseInfo {
 #
 #     RELEASE_NAME
 #     VERSION_TAG
+#     TAG_DESCRIPTION
 
    if [ -t 1 ] ; then
       if [ -z "$RELEASE_NAME" ]; then
@@ -73,6 +74,9 @@ function checkReleaseInfo {
       fi
       if [ -z "$VERSION_TAG" ]; then
          read -p "Enter release number: " VERSION_TAG
+      fi
+      if [ -z "$TAG_DESCRIPTION" ]; then
+         read -p "Enter description: " TAG_DESCRIPTION
       fi
    fi
    if [ -z "$RELEASE_NAME" ] || [ -z "$VERSION_TAG" ]; then

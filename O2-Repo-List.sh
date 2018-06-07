@@ -52,6 +52,7 @@ omar-scdf-image-info
 omar-scdf-notifier-email \
 omar-scdf-s3-extractor-filter \
 omar-scdf-s3-filter \
+omar-scdf-s3-source \
 omar-scdf-server \
 omar-scdf-stager \
 omar-scdf-sqs \

@@ -14,15 +14,18 @@
 #-------------------------------------------------------------------------------------
 
 usage() {
-   echo;
+   echo
+   echo "This script modifies the release name and version number in the dev-branch of the config"
+   echo "repo's application.yml, to reflect the next release that dev is intended for."
+   echo
    echo "Usage:  $0 [options]"
    echo
    echo "Options:"
    echo
    echo "  --config-repo <dir>     Directory path to spring cloud config-repo. If specified, the"
    echo "  -h, --help              Prints usage. "
-   echo "  --release-name <name>   Release Name, e.g., \"Hollywood\"."
-   echo "  --tag <version>         Version tag, e.g. \"2.4.0\"."
+   echo "  --release-name <name>   Next release name, e.g., \"Hollywood\"."
+   echo "  --tag <version>         Next version tag, e.g. \"2.4.0\"."
    echo
    exit 1;
 }
@@ -55,16 +58,21 @@ if [ ! -d "$CONFIG_REPO" ] ; then
 fi
 
 checkGitURLsAndCreds
+
 RELEASE_NAME=$NEXT_RELEASE_NAME
 VERSION_TAG=$NEXT_VERSION_TAG
+TAG_DESCRIPTION="N/A"
 checkReleaseInfo
 
 # Verify we are on the dev branch of the config repo:
 pushd $CONFIG_REPO
 appFileName="application.yml"
 if [ ! -f "$appFileName" ] ; then
-  echo; echo "ERROR: The config-repo directory does not contain $appFileName. Aborting."; echo
-  exit 1
+   appFileName="spring/application.yml"
+   if [ ! -f "$appFileName" ] ; then
+      echo; echo "ERROR: The config-repo directory does not contain $appFileName. Aborting."; echo
+      exit 1
+   fi
 fi
 runCommand git checkout dev
 
