@@ -17,6 +17,8 @@ usage() {
    echo
    echo "This script modifies the release name and version number in the dev-branch of the config"
    echo "repo's application.yml, to reflect the next release that dev is intended for."
+   echo "User will be prompted if release info is not provided via options."
+   echo "See script for comments on parameter settings via environment variables."
    echo
    echo "Usage:  $0 [options]"
    echo
@@ -74,6 +76,7 @@ if [ ! -f "$appFileName" ] ; then
       exit 1
    fi
 fi
+echo "appFileName = $appFileName"
 runCommand git checkout dev
 runCommand git pull
 
@@ -83,6 +86,7 @@ tempFilename="app-temp.yml"
 rm -f $tempFilename
 while IFS='' read -r line || [[ -n "$line" ]]; do
    words=($line)
+   echo $line
    if [ "${words[0]}" == "releaseName:" ]; then
       line="releaseName: ${RELEASE_NAME}"
       echo "$line"

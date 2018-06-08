@@ -1,8 +1,5 @@
 #!/bin/bash
-# This script tags the omar/ossim git repositories with release informatin provided in the
-# environment. If this is run from an interactive shell, it will prompt for needed parameters,
-# Otherwise, it presumes it is launched from a Jenkins script and will read the following env
-# vars provided by the pipeline:
+# If launched from a Jenkins script, will read the following env vars provided by the pipeline:
 #
 #   RELEASE_NAME
 #   VERSION_TAG
@@ -16,13 +13,13 @@
 #set -x; trap read debug
 
 JSON_DATA=""
-
 #-------------------------------------------------------------------------------------
 
 usage() {
    echo
    echo "This script tags the omar/ossim git repositories with release information provided"
    echo "either via the options or the prompted entries."
+   echo "See script for comments on parameter settings via environment variables."
    echo
    echo "Usage:  $0 [options]"
    echo
