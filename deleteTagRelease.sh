@@ -1,11 +1,10 @@
 #!/bin/bash
 #
 # Deletes tag from all O2 Github repositories.
-# Expected in environment:
+# Expected in environment, will be prompted if not provided:
 #
-#    TAG_RELEASE_NAME
-#
-#  Will be prompted if not provided:
+#    RELEASE_NAME
+#    VERSION_TAG
 #    GITHUB_USERNAME
 #    GITHUB_PASSWORD
 
@@ -33,20 +32,20 @@ usage() {
 
 #-------------------------------------------------------------------------------------
 
-function extractId {
-   eval $1=`echo $2 |grep -o -m1 '"id"\:.*\,'|tr -cd '[:digit:],'|cut -d "," -f1 `
-}
-
-#-------------------------------------------------------------------------------------
-
 function deleteReleaseRepo {
-  local ACCOUNT=$1
+  local OWNER=$1
   local REPO=$2
-  local DATA=$(curl -s -u ${GITHUB_USERNAME}:${GITHUB_PASSWORD} -X GET https://api.github.com/repos/${ACCOUNT}/${REPO}/releases)
-  extractId RELEASE_ID "$DATA"
+  local DATA="{\"data\":$(curl -s -u ${GITHUB_USERNAME}:${GITHUB_PASSWORD} -X GET https://api.github.com/repos/${OWNER}/${REPO}/releases) }"
 
-  curl -u $GITHUB_USERNAME:$GITHUB_PASSWORD -X DELETE "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases/${RELEASE_ID}"
-  curl -u $GITHUB_USERNAME:$GITHUB_PASSWORD -X DELETE "https://api.github.com/repos/${ACCOUNT}/${REPO}/git/refs/tags/${TAG_RELEASE_NAME}"
+  # Extract the ID of the tag to be removed:
+  local RELEASE_ID=`echo "$DATA" | python getReleaseID.py $TAG_RELEASE_NAME `
+
+  if [ -z "$RELEASE_ID" ]; then
+     echo "$TAG_RELEASE_NAME not found in ${OWNER}/${REPO}, skipping."
+  else
+     curl -u $GITHUB_USERNAME:$GITHUB_PASSWORD -X DELETE "https://api.github.com/repos/${OWNER}/${REPO}/releases/${RELEASE_ID}"
+     echo "$TAG_RELEASE_NAME (id=$RELEASE_ID) removed from ${OWNER}/${REPO}."
+  fi
 }
 
 #-------------------------------------------------------------------------------------
