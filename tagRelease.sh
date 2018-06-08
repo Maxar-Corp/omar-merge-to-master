@@ -8,6 +8,7 @@
 #   GIT_PRIVATE_SERVER_URL
 #   GITHUB_USERNAME
 #   GITHUB_PASSWORD
+#   TAG_RELEASE_BRANCH
 #
 # Uncomment following line to debug script line by line:
 #set -x; trap read debug
@@ -25,6 +26,7 @@ usage() {
    echo
    echo "Options:"
    echo
+   echo "  --branch <label>        Branch HEAD to tag (defaults to 'master')"
    echo "  --description <string>  Release description string"
    echo "  -h, --help              Prints usage. "
    echo "  --release-name <name>   Release Name, e.g., \"Hollywood\"."
@@ -65,6 +67,7 @@ popd >/dev/null
 # Parse command line
 while [ $# -gt 0 ]; do
    case $1 in
+      --branch) TAG_RELEASE_BRANCH=$2 ; shift ;;
       --description) TAG_DESCRIPTION=$2 ; shift ;;
       -h|--help) usage ;;
       --release-name) RELEASE_NAME=${2} ; shift ;;
@@ -77,6 +80,10 @@ done
 
 checkGitURLsAndCreds
 checkReleaseInfo
+
+if [ -z "$TAG_RELEASE_BRANCH" ]; then
+   TAG_RELEASE_BRANCH="master"
+fi
 
 TAG_RELEASE_NAME=${RELEASE_NAME}-${VERSION_TAG}
 echo RELEASE_NAME = $RELEASE_NAME
