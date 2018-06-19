@@ -63,6 +63,7 @@ export OSSIMLABS_FILES=(
  omar-scdf-indexer \
  omar-scdf-image-info
  omar-scdf-notifier-email \
+ omar-scdf-regex-filter \
  omar-scdf-s3-extractor-filter \
  omar-scdf-s3-filter \
  omar-scdf-s3-source \
