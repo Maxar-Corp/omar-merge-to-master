@@ -83,7 +83,6 @@ tempFilename="app-temp.yml"
 rm -f $tempFilename
 while IFS='' read -r line || [[ -n "$line" ]]; do
    words=($line)
-   echo $line
    if [ "${words[0]}" == "releaseName:" ]; then
       line="releaseName: ${RELEASE_NAME}"
       echo "$line"
@@ -98,6 +97,7 @@ runCommand mv $tempFilename $appFileName
 runCommand git add $appFileName
 runCommand git commit -m \"$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}\"
 runCommand git push --set-upstream origin dev
+runCommand git push
 
 popd
 echo; echo "Done.";echo
