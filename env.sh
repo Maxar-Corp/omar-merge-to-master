@@ -21,7 +21,8 @@ export RADIANTBLUE_FILES=(
  ossim_kakadu_jpip_server \
  ossim-isa \
  ossim-msp-plugin \
- ossim-private")
+ ossim-private \
+ omar-ingest-tests-cucumber")
 export OSSIMLABS_FILES=(
 "omar \
  omar-admin-server \
