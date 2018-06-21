@@ -59,8 +59,6 @@ if [ ! -d "$CONFIG_REPO" ] ; then
   exit 1
 fi
 
-checkGitURLsAndCreds
-
 RELEASE_NAME=$NEXT_RELEASE_NAME
 VERSION_TAG=$NEXT_VERSION_TAG
 TAG_DESCRIPTION="N/A"
@@ -99,7 +97,6 @@ done < "$appFileName"
 
 runCommand mv $tempFilename $appFileName
 runCommand git add $appFileName
-runCommand git config --global user.name $GITHUB_USERNAME
 runCommand git commit -m \"$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}\"
 runCommand git push
 
