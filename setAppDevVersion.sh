@@ -97,7 +97,7 @@ done < "$appFileName"
 runCommand mv $tempFilename $appFileName
 runCommand git add $appFileName
 runCommand git commit -m \"$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}\"
-runCommand git push
+runCommand git push --set-upstream origin dev
 
 popd
 echo; echo "Done.";echo
