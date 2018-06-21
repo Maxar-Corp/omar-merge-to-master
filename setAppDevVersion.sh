@@ -76,7 +76,6 @@ if [ ! -f "$appFileName" ] ; then
 fi
 echo "appFileName = $appFileName"
 runCommand git checkout dev
-runCommand git pull
 
 # Perform the line substitution in the file (no actual YAML parsing):
 echo; echo "Updated:"
