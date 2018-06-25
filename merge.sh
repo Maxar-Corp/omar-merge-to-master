@@ -31,6 +31,10 @@ function cloneRepo {
   local repoUrl=$1
   local repo=$2
   local target=$3
+  echo repoUrl=$repoUrl
+  echo repo=$repo
+  echo target=$target
+  echo
   git clone $repoUrl/$repo $target
 }
 
