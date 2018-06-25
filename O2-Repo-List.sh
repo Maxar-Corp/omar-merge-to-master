@@ -81,4 +81,5 @@ ossim-video \
 ossim-wms \
 ossim-rpm \
 ossim-rpm-dependencies \
+rhel-minimal \
 tlv")
