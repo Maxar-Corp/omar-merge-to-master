@@ -43,21 +43,14 @@ omar-ossim-base \
 omar-ossimtools \
 omar-raster \
 omar-scdf \
-omar-scdf-aggregator \
 omar-scdf-downloader \
-omar-scdf-extractor \
-omar-scdf-file-parser \
 omar-scdf-indexer \
 omar-scdf-image-info
-omar-scdf-notifier-email \
 omar-scdf-regex-filter \
-omar-scdf-s3-extractor-filter \
-omar-scdf-s3-filter \
 omar-scdf-s3-source \
 omar-scdf-server \
 omar-scdf-stager \
 omar-scdf-sqs \
-omar-scdf-s3-uploader \
 omar-twofishes \
 omar-security \
 omar-service-proxy \
