@@ -59,7 +59,6 @@ omar-scdf-stager \
 omar-scdf-sqs \
 omar-scdf-s3-uploader \
 omar-twofishes \
-omar-turbine-server\
 omar-security \
 omar-service-proxy \
 omar-services \
@@ -74,7 +73,6 @@ omar-wfs \
 omar-wms \
 omar-wmts \
 omar-video \
-omar-zipkin-server \
 omar-zuul-server \
 ossim \
 ossim-batch-test \
