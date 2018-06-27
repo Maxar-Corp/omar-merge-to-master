@@ -47,6 +47,12 @@ popd >/dev/null
 
 checkGitURLsAndCreds
 
+if [ -d repositories ]; then
+   rm -rf repositories
+fi 
+mkdir repositories
+pushd repositories
+
 echo "ABOUT TO CHECKOUT REPOS"
 for repo in $RADIANTBLUE_REPOS ; do
   if [ ! -e $repo ] ; then
@@ -67,4 +73,5 @@ done
 
 mergeToMaster "${RADIANTBLUE_REPOS[@]}"
 mergeToMaster "${OSSIMLABS_REPOS[@]}"
+popd
 #mergeToMaster "oldmar"
