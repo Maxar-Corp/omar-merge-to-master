@@ -15,16 +15,16 @@
 
 usage() {
    echo
-   echo "This script modifies the release name and version number in the dev-branch of the config"
-   echo "repo's application.yml, to reflect the next release that dev is intended for."
-   echo "User will be prompted if release info is not provided via options."
+   echo "This script modifies the release name and version number in the dev-branch of the"
+   echo "spring-config's application.yml, to reflect the next release that dev is intended"
+   echo " for. User will be prompted if release info is not provided via options."
    echo "See script for comments on parameter settings via environment variables."
    echo
    echo "Usage:  $0 [options]"
    echo
    echo "Options:"
    echo
-   echo "  --config-repo <dir>     Directory path to spring cloud config-repo. If specified, the"
+   echo "  --config-repo <dir>     Directory path to config-repo"
    echo "  -h, --help              Prints usage. "
    echo "  --release-name <name>   Next release name, e.g., \"Hollywood\"."
    echo "  --tag <version>         Next version tag, e.g. \"2.4.0\"."
@@ -68,7 +68,7 @@ checkReleaseInfo
 pushd $CONFIG_REPO
 appFileName="application.yml"
 if [ ! -f "$appFileName" ] ; then
-   appFileName="spring/application.yml"
+   appFileName="spring-config/application.yml"
    if [ ! -f "$appFileName" ] ; then
       echo; echo "ERROR: The config-repo directory does not contain $appFileName. Aborting."; echo
       exit 1
