@@ -81,22 +81,30 @@ runCommand git checkout dev
 echo; echo "Updated:"
 tempFilename="app-temp.yml"
 rm -f $tempFilename
+modified=false
 while IFS='' read -r line || [[ -n "$line" ]]; do
    words=($line)
-   if [ "${words[0]}" == "releaseName:" ]; then
+   if [ "${words[0]}" == "releaseName:" ] && [ "${words[1]}" != "${RELEASE_NAME}" ]; then
       line="releaseName: ${RELEASE_NAME}"
       echo "$line"
-   elif [ "${words[0]}" == "releaseNumber:" ]; then
+      modified=true
+   elif [ "${words[0]}" == "releaseNumber:" ] && [ "${words[1]}" != "${VERSION_TAG}" ]; then
       line="releaseNumber: ${VERSION_TAG}"
       echo "$line"
+      modified=true
    fi
    echo "${line}" >> $tempFilename
 done < "$appFileName"
 
-runCommand mv $tempFilename $appFileName
-runCommand git add $appFileName
-runCommand git commit -m \"$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}\"
-runCommand git push --set-upstream origin dev
+if $modified; then
+   runCommand mv $tempFilename $appFileName
+   runCommand git add $appFileName
+   runCommand git commit -m \"$scriptName: Modified release info to ${RELEASE_NAME}-${VERSION_TAG}\"
+   runCommand git push --set-upstream origin dev
+else
+   echo; echo "No changes detected."
+   runCommand rm $tempFilename
+fi
 
 popd
 echo; echo "Done.";echo
