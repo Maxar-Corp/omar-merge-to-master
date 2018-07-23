@@ -45,7 +45,7 @@ omar-raster \
 omar-scdf \
 omar-scdf-downloader \
 omar-scdf-indexer \
-omar-scdf-image-info
+omar-scdf-image-info \
 omar-scdf-regex-filter \
 omar-scdf-s3-source \
 omar-scdf-server \
