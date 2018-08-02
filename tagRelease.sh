@@ -6,8 +6,8 @@
 #   TAG_DESCRIPTION
 #   GIT_PUBLIC_SERVER_URL
 #   GIT_PRIVATE_SERVER_URL
-#   GITHUB_USERNAME
-#   GITHUB_PASSWORD
+#   GIT_USERNAME
+#   GIT_PASSWORD
 #   TAG_RELEASE_BRANCH
 #
 # Uncomment following line to debug script line by line:
@@ -50,11 +50,18 @@ function setGitJsonData {
 
 #-------------------------------------------------------------------------------------
 
-function releaseRepo {
-   ACCOUNT=$1
-   REPO=$2
-   echo "JSON_DATA:--------------";echo ${JSON_DATA}; echo "--------------";
-   curl -d "${JSON_DATA}" -u $GITHUB_USERNAME:$GITHUB_PASSWORD -X POST "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases"
+function tagRepo {
+   local ACCOUNT=$1
+   local REPO=$2
+   echo "Tagging $repo"
+#   echo "JSON_DATA:--------------";echo ${JSON_DATA}; echo "--------------";
+#   curl -d "${JSON_DATA}" -u $GIT_USERNAME:$GIT_PASSWORD -X POST "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases"
+   git clone -n $ACCOUNT/$REPO
+   pushd $REPO
+   git tag ${TAG_RELEASE_NAME}
+   git push --tag
+   popd
+   rm -rf $REPO
 }
 
 #-------------------- MAIN SCRIPT SECTION ---------------------------------------
@@ -94,16 +101,14 @@ setGitJsonData
 
 for repo in $RADIANTBLUE_REPOS ; do
   # if [ ! -e $repo ] ; then
-    echo "Tagging $repo"
-    releaseRepo radiantbluetechnologies $repo
+    tagRepo $GIT_PRIVATE_SERVER_URL $repo
   # fi
 done
 
 for repo in $OSSIMLABS_REPOS ; do
   # if [ ! -e $repo ] ; then
-    echo "Tagging $repo"
-    releaseRepo ossimlabs $repo
+    tagRepo $GIT_PUBLIC_SERVER_URL $repo
   # fi
 done
 
-releaseRepo radiantbluetechnologies omar
+tagRepo $GIT_PRIVATE_SERVER_URL omar

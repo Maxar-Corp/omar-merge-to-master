@@ -32,20 +32,25 @@ usage() {
 
 #-------------------------------------------------------------------------------------
 
-function deleteReleaseRepo {
-  local OWNER=$1
+function untagRepo {
+  local ACCOUNT=$1
   local REPO=$2
-  local DATA="{\"data\":$(curl -s -u ${GITHUB_USERNAME}:${GITHUB_PASSWORD} -X GET https://api.github.com/repos/${OWNER}/${REPO}/releases) }"
+  #local DATA="{\"data\":$(curl -s -u ${GITHUB_USERNAME}:${GITHUB_PASSWORD} -X GET https://api.github.com/repos/${ACCOUNT}/${REPO}/releases) }"
+
+  git clone -n $ACCOUNT/$REPO
+  pushd $REPO
+  git push --delete origin ${TAG_RELEASE_NAME}
+  popd
+  rm -rf $REPO
 
   # Extract the ID of the tag to be removed:
-  local RELEASE_ID=`echo "$DATA" | python getReleaseID.py $TAG_RELEASE_NAME `
-
-  if [ -z "$RELEASE_ID" ]; then
-     echo "$TAG_RELEASE_NAME not found in ${OWNER}/${REPO}, skipping."
-  else
-     curl -u $GITHUB_USERNAME:$GITHUB_PASSWORD -X DELETE "https://api.github.com/repos/${OWNER}/${REPO}/releases/${RELEASE_ID}"
-     echo "$TAG_RELEASE_NAME (id=$RELEASE_ID) removed from ${OWNER}/${REPO}."
-  fi
+  #local RELEASE_ID=`echo "$DATA" | python getReleaseID.py $TAG_RELEASE_NAME `
+  #if [ -z "$RELEASE_ID" ]; then
+  #   echo "$TAG_RELEASE_NAME not found in ${ACCOUNT}/${REPO}, skipping."
+  #else
+  #   #curl -u $GITHUB_USERNAME:$GITHUB_PASSWORD -X DELETE "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases/${RELEASE_ID}"
+  #   echo "$TAG_RELEASE_NAME (id=$RELEASE_ID) removed from ${ACCOUNT}/${REPO}."
+  #fi
 }
 
 #-------------------------------------------------------------------------------------
@@ -53,6 +58,7 @@ function deleteReleaseRepo {
 pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 SCRIPT_DIR=`pwd`
 . ./O2-Repo-List.sh
+. ./common.sh
 popd >/dev/null
 
 # Parse command line
@@ -76,14 +82,14 @@ echo TAG_RELEASE_NAME = $TAG_RELEASE_NAME
 
 for repo in $RADIANTBLUE_REPOS ; do
   if [ ! -e $repo ] ; then
-    deleteReleaseRepo radiantbluetechnologies $repo
+    untagRepo $GIT_PRIVATE_SERVER_URL $repo
   fi
 done
 
 for repo in $OSSIMLABS_REPOS ; do
   if [ ! -e $repo ] ; then
-    deleteReleaseRepo ossimlabs $repo
+    untagRepo $GIT_PUBLIC_SERVER_URL $repo
   fi
 done
 
-deleteReleaseRepo radiantbluetechnologies omar
+untagRepo $GIT_PRIVATE_SERVER_URL omar
