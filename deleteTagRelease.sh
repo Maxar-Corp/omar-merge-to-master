@@ -33,24 +33,25 @@ usage() {
 #-------------------------------------------------------------------------------------
 
 function untagRepo {
-  local ACCOUNT=$1
-  local REPO=$2
-  #local DATA="{\"data\":$(curl -s -u ${GITHUB_USERNAME}:${GITHUB_PASSWORD} -X GET https://api.github.com/repos/${ACCOUNT}/${REPO}/releases) }"
+   local ACCOUNT=$1
+   local REPO=$2
 
-  git clone -n $ACCOUNT/$REPO
-  pushd $REPO
-  git push --delete origin ${TAG_RELEASE_NAME}
-  popd
-  rm -rf $REPO
-
-  # Extract the ID of the tag to be removed:
-  #local RELEASE_ID=`echo "$DATA" | python getReleaseID.py $TAG_RELEASE_NAME `
-  #if [ -z "$RELEASE_ID" ]; then
-  #   echo "$TAG_RELEASE_NAME not found in ${ACCOUNT}/${REPO}, skipping."
-  #else
-  #   #curl -u $GITHUB_USERNAME:$GITHUB_PASSWORD -X DELETE "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases/${RELEASE_ID}"
-  #   echo "$TAG_RELEASE_NAME (id=$RELEASE_ID) removed from ${ACCOUNT}/${REPO}."
-  #fi
+   echo; echo -n "Untagging $repo... "
+   git clone -n $ACCOUNT/$REPO
+   pushd $REPO > /dev/null
+   verifyTag=`git tag -l $TAG_RELEASE_NAME`
+   if [ "$verifyTag" == "$TAG_RELEASE_NAME" ]; then
+      git push --delete origin ${TAG_RELEASE_NAME}
+      if [ $? != 0 ] ; then
+         echo "Failed while pushing tag deletion."
+      else
+         echo "Done"
+      fi 
+   else
+      echo "$TAG_RELEASE_NAME not found, skipping repository."
+   fi
+   popd > /dev/null
+   rm -rf $REPO
 }
 
 #-------------------------------------------------------------------------------------

@@ -13,7 +13,6 @@
 # Uncomment following line to debug script line by line:
 #set -x; trap read debug
 
-JSON_DATA=""
 #-------------------------------------------------------------------------------------
 
 usage() {
@@ -35,32 +34,21 @@ usage() {
    exit 1;
 }
 
-#-------------------------------------------------------------------------------------
-
-function setGitJsonData {
-   JSON_DATA=$(echo   \
-   { \"tag_name\": \"${TAG_RELEASE_NAME}\",\
-     \"target_commitish\":\"${TAG_RELEASE_BRANCH}\",\
-     \"name\":\"${TAG_RELEASE_NAME}\",\
-     \"body\":\"${TAG_DESCRIPTION}\",\
-     \"draft\":false,\
-     \"prerelease\":false\
-   })
-}
-
-#-------------------------------------------------------------------------------------
-
 function tagRepo {
    local ACCOUNT=$1
    local REPO=$2
-   echo "Tagging $repo"
-#   echo "JSON_DATA:--------------";echo ${JSON_DATA}; echo "--------------";
-#   curl -d "${JSON_DATA}" -u $GIT_USERNAME:$GIT_PASSWORD -X POST "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases"
+
+   echo; echo -n "Tagging $repo... "
    git clone -n -b ${TAG_RELEASE_BRANCH} $ACCOUNT/$REPO
-   pushd $REPO
-   git tag ${TAG_RELEASE_NAME}
+   pushd $REPO > /dev/null
+   git tag -m "${TAG_RELEASE_NAME}" ${TAG_RELEASE_NAME}
    git push --tag
-   popd
+   if [ $? != 0 ] ; then
+      echo "Failed while pushing new tag."
+   else
+      echo "Done"
+   fi
+   popd > /dev/null
    rm -rf $REPO
 }
 
