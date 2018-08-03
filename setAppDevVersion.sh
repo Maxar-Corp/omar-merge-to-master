@@ -8,8 +8,6 @@
 #     CONFIG_REPO
 #     GIT_PUBLIC_SERVER_URL
 #     GIT_PRIVATE_SERVER_URL
-#     GITHUB_USERNAME
-#     GITHUB_PASSWORD
 
 #-------------------------------------------------------------------------------------
 

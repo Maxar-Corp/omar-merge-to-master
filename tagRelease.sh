@@ -6,8 +6,6 @@
 #   TAG_DESCRIPTION
 #   GIT_PUBLIC_SERVER_URL
 #   GIT_PRIVATE_SERVER_URL
-#   GIT_USERNAME
-#   GIT_PASSWORD
 #   TAG_RELEASE_BRANCH
 #
 # Uncomment following line to debug script line by line:
@@ -38,15 +36,13 @@ function tagRepo {
    local ACCOUNT=$1
    local REPO=$2
 
-   echo; echo -n "Tagging $repo... "
+   echo; echo "Tagging $repo... "
    git clone -n -b ${TAG_RELEASE_BRANCH} $ACCOUNT/$REPO
    pushd $REPO > /dev/null
    git tag -m "${TAG_RELEASE_NAME}" ${TAG_RELEASE_NAME}
    git push --tag
    if [ $? != 0 ] ; then
       echo "Failed while pushing new tag."
-   else
-      echo "Done"
    fi
    popd > /dev/null
    rm -rf $REPO

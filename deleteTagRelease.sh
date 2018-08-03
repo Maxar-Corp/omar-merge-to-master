@@ -36,7 +36,7 @@ function untagRepo {
    local ACCOUNT=$1
    local REPO=$2
 
-   echo; echo -n "Untagging $repo... "
+   echo; echo "Untagging $repo... "
    git clone -n $ACCOUNT/$REPO
    pushd $REPO > /dev/null
    verifyTag=`git tag -l $TAG_RELEASE_NAME`
@@ -44,9 +44,7 @@ function untagRepo {
       git push --delete origin ${TAG_RELEASE_NAME}
       if [ $? != 0 ] ; then
          echo "Failed while pushing tag deletion."
-      else
-         echo "Done"
-      fi 
+      fi
    else
       echo "$TAG_RELEASE_NAME not found, skipping repository."
    fi
