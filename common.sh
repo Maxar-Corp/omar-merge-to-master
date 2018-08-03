@@ -24,33 +24,13 @@ function checkGitURLsAndCreds {
 
    # Low-side defaults only used if GIT URLs not provided in environment
    if [ "$WWW_CONNECTED" == "true" ]; then
-      local OSSIMLABS_URL="https://github.com/ossimlabs"
-      local RADIANTBLUE_URL="https://github.com/radiantbluetechnologies"
       if [ -z "$GIT_PUBLIC_SERVER_URL" ]; then
-         GIT_PUBLIC_SERVER_URL=$OSSIMLABS_URL
+         GIT_PUBLIC_SERVER_URL="git@github.com:ossimlabs"
       fi
       if [ -z "$GIT_PRIVATE_SERVER_URL" ]; then
-         GIT_PRIVATE_SERVER_URL=$RADIANTBLUE_URL
+         GIT_PRIVATE_SERVER_URL="git@github.com:radiantbluetechnologies"
       fi
    fi
-
-   # Use Jenkins-provided values if available, otherwise use those provided here
-   if [ -z "$GIT_PUBLIC_SERVER_URL" ] || [ -z "$GIT_PRIVATE_SERVER_URL" ]; then
-      echo "ERROR: Git server URLs are not defined. Verify environment variables "
-      echo "GIT_PUBLIC_SERVER_URL and GIT_PRIVATE_SERVER_URL are assigned. "
-      echo; exit 1;
-   fi
-
-   # Prompt if needed, and only if interactive shell:
-   #if [ -t 1 ] ; then
-   #   if [ -z "$GIT_USERNAME" ]; then
-   #      read -p "Git username: " GIT_USERNAME
-   #   fi
-   #   if [ -z "$GIT_PASSWORD" ]; then
-   #      read -s -p "Git password: " GIT_PASSWORD
-   #      echo
-   #   fi
-   #fi
 }
 
 #-------------------------------------------------------------------------------------

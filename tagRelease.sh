@@ -56,7 +56,7 @@ function tagRepo {
    echo "Tagging $repo"
 #   echo "JSON_DATA:--------------";echo ${JSON_DATA}; echo "--------------";
 #   curl -d "${JSON_DATA}" -u $GIT_USERNAME:$GIT_PASSWORD -X POST "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases"
-   git clone -n $ACCOUNT/$REPO
+   git clone -n -b ${TAG_RELEASE_BRANCH} $ACCOUNT/$REPO
    pushd $REPO
    git tag ${TAG_RELEASE_NAME}
    git push --tag
