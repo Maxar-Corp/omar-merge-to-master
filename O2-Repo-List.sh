@@ -42,13 +42,9 @@ omar-opir \
 omar-ossim-base \
 omar-ossimtools \
 omar-raster \
-omar-scdf \
-omar-scdf-downloader \
 omar-scdf-indexer \
-omar-scdf-image-info \
 omar-scdf-regex-filter \
 omar-scdf-s3-source \
-omar-scdf-server \
 omar-scdf-stager \
 omar-scdf-sqs \
 omar-twofishes \
