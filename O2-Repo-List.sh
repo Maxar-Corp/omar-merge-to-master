@@ -34,6 +34,7 @@ omar-ingest-metrics \
 omar-ingest-tests \
 omar-jpip \
 omar-mapproxy \
+omar-mariadb \
 omar-mensa \
 omar-oldmar \
 omar-oms \
@@ -41,10 +42,12 @@ omar-openlayers \
 omar-opir \
 omar-ossim-base \
 omar-ossimtools \
+omar-rabbitmq \
 omar-raster \
 omar-scdf-indexer \
 omar-scdf-regex-filter \
 omar-scdf-s3-source \
+omar-scdf-server-openshift \
 omar-scdf-stager \
 omar-scdf-sqs \
 omar-twofishes \
