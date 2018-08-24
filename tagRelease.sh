@@ -32,15 +32,14 @@ usage() {
    exit 1;
 }
 
+#-------------------------------------------------------------------------------------
+
 function tagRepo {
    local ACCOUNT=$1
    local REPO=$2
 
    echo; echo "Tagging $repo... "
-   git clone -n -b ${TAG_RELEASE_BRANCH} $ACCOUNT/$REPO
-   pushd $REPO > /dev/null
-   git tag -m "${TAG_RELEASE_NAME}" ${TAG_RELEASE_NAME}
-   git push --tag
+   curl -X POST -d $JSON_DATA https://api.github.com/repos/:$ACCOUNT/$REPO
    if [ $? != 0 ] ; then
       echo "Failed while pushing new tag."
    fi
@@ -81,18 +80,22 @@ echo RELEASE_NAME = $RELEASE_NAME
 echo VERSION_TAG = $VERSION_TAG
 echo TAG_RELEASE_NAME = $TAG_RELEASE_NAME
 echo TAG_DESCRIPTION = $TAG_DESCRIPTION
-setGitJsonData
+
+JSON_DATA='{
+   "tag_name": "${TAG_RELEASE_NAME}",
+   "target_commitish": "master",
+   "name": "${TAG_RELEASE_NAME}",
+   "body": "${TAG_RELEASE_NAME}",
+   "draft": false,
+   "prerelease": false
+}'
 
 for repo in $RADIANTBLUE_REPOS ; do
-  # if [ ! -e $repo ] ; then
     tagRepo $GIT_PRIVATE_SERVER_URL $repo
-  # fi
 done
 
 for repo in $OSSIMLABS_REPOS ; do
-  # if [ ! -e $repo ] ; then
     tagRepo $GIT_PUBLIC_SERVER_URL $repo
-  # fi
 done
 
 tagRepo $GIT_PRIVATE_SERVER_URL omar
