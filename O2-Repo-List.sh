@@ -44,6 +44,7 @@ omar-ossim-base \
 omar-ossimtools \
 omar-rabbitmq \
 omar-raster \
+omar-services-monitor \
 omar-scdf-indexer \
 omar-scdf-regex-filter \
 omar-scdf-s3-source \
