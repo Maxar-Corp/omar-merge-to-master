@@ -35,19 +35,11 @@ function untagRepo {
    local REPO=$2
 
    echo; echo "Untagging $repo... "
-   git clone -n $ACCOUNT/$REPO
-   pushd $REPO > /dev/null
-   verifyTag=`git tag -l $TAG_RELEASE_NAME`
-   if [ "$verifyTag" == "$TAG_RELEASE_NAME" ]; then
-      git push --delete origin ${TAG_RELEASE_NAME}
-      if [ $? != 0 ] ; then
-         echo "Failed while pushing tag deletion."
-      fi
-   else
-      echo "$TAG_RELEASE_NAME not found, skipping repository."
+   curl -X DELETE /repos/$ACCOUNT/$REPO/releases/${TAG_RELEASE_NAME}
+   if [ $? != 0 ] ; then
+      echo "Failed while requesting tag deletion."
    fi
-   popd > /dev/null
-   rm -rf $REPO
+
 }
 
 #-------------------------------------------------------------------------------------
@@ -77,13 +69,13 @@ echo TAG_RELEASE_NAME = $TAG_RELEASE_NAME
 
 for repo in $RADIANTBLUE_REPOS ; do
   if [ ! -e $repo ] ; then
-    untagRepo $GIT_PRIVATE_SERVER_URL $repo
+    untagRepo radiantbluetechnologies $repo
   fi
 done
 
 for repo in $OSSIMLABS_REPOS ; do
   if [ ! -e $repo ] ; then
-    untagRepo $GIT_PUBLIC_SERVER_URL $repo
+    untagRepo ossimlabs $repo
   fi
 done
 
