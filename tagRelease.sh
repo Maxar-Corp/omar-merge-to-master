@@ -38,8 +38,17 @@ function tagRepo {
    local ACCOUNT=$1
    local REPO=$2
 
+   CREDS=""
+   if ( ! -z $GITHUB_USERNAME ) ; then
+     CREDS="$GITHUB_USERNAME:$GITHUB_PASSWORD"
+   fi
    echo; echo "Tagging $repo... "
-   curl -X POST -d "$JSON_DATA" "https://api.github.com/repos/:$ACCOUNT/$REPO"
+   if ( -z $CREDS ) ; then
+       curl -X POST -d "$JSON_DATA" "https://api.github.com/repos/:$ACCOUNT/$REPO"
+   else
+       echo "USER CREDS! $GITHUB_USERNAME"
+       curl -u "$CREDS" -X POST -d "$JSON_DATA" "https://api.github.com/repos/:$ACCOUNT/$REPO"
+   fi
    if [ $? != 0 ] ; then
       echo "Failed while pushing new tag."
    fi
