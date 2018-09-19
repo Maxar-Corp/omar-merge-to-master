@@ -44,12 +44,12 @@ function tagRepo {
    fi
    echo; echo "Tagging $repo... "
    if [ -z $CREDS ] ; then
-       echo curl -X POST -d "$JSON_DATA" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
-       curl -X POST -d "$JSON_DATA" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
+       echo "No credentials specified, any attempted POSTs will fail!"
+       exit 1
    else
        echo "USER CREDS! $GITHUB_USERNAME"
-       echo curl -u "$CREDS" -X POST -d "$JSON_DATA" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
-       curl -u "$CREDS" -X POST -d "$JSON_DATA" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
+       echo curl -u "$CREDS" -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
+       curl -u "$CREDS" -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
    fi
    if [ $? != 0 ] ; then
       echo "Failed while pushing new tag."
@@ -91,24 +91,21 @@ echo VERSION_TAG = $VERSION_TAG
 echo TAG_RELEASE_NAME = $TAG_RELEASE_NAME
 echo TAG_DESCRIPTION = $TAG_DESCRIPTION
 
-JSON_DATA='{
-   "tag_name": "${TAG_RELEASE_NAME}",
-   "target_commitish": "master",
-   "name": "${TAG_RELEASE_NAME}",
-   "body": "${TAG_RELEASE_NAME}",
-   "draft": false,
-   "prerelease": false
-}'
+JSON_DATA="{
+   \"tag_name\": \"${TAG_RELEASE_NAME}\",
+   \"target_commitish\": \"master\",
+   \"name\": \"${TAG_RELEASE_NAME}\",
+   \"body\": \"${TAG_RELEASE_NAME}\",
+   \"draft\": false,
+   \"prerelease\": false
+}"
 
 for repo in $RADIANTBLUE_REPOS ; do
-    #tagRepo $GIT_PRIVATE_SERVER_URL $repo
     tagRepo radiantbluetechnologies $repo
 done
 
 for repo in $OSSIMLABS_REPOS ; do
-    #tagRepo $GIT_PUBLIC_SERVER_URL $repo
     tagRepo ossimlabs $repo
 done
 
-#tagRepo $GIT_PRIVATE_SERVER_URL omar
 tagRepo  radiantbluetechnologies omar
