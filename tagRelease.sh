@@ -39,11 +39,11 @@ function tagRepo {
    local REPO=$2
 
    CREDS=""
-   if ( ! -z $GITHUB_USERNAME ) ; then
+   if [ ! -z $GITHUB_USERNAME ] ; then
      CREDS="$GITHUB_USERNAME:$GITHUB_PASSWORD"
    fi
    echo; echo "Tagging $repo... "
-   if ( -z $CREDS ) ; then
+   if [ -z $CREDS ] ; then
        curl -X POST -d "$JSON_DATA" "https://api.github.com/repos/:$ACCOUNT/$REPO"
    else
        echo "USER CREDS! $GITHUB_USERNAME"
