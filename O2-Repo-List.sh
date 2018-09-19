@@ -7,6 +7,7 @@ omar-merge-to-master \
 ossim_kakadu_jpip_server \
 ossim-isa \
 ossim-msp-plugin \
+ossim-ci \
 ossim-private")
 
 OSSIMLABS_REPOS=("\
@@ -69,7 +70,6 @@ omar-video \
 omar-zuul-server \
 ossim \
 ossim-batch-test \
-ossim-ci \
 ossim-csm-plugin \
 ossim-gui \
 ossim-jpip-server \
