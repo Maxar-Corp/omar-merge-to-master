@@ -44,10 +44,10 @@ function tagRepo {
    fi
    echo; echo "Tagging $repo... "
    if [ -z $CREDS ] ; then
-       curl -X POST -d "$JSON_DATA" "https://api.github.com/repos/:$ACCOUNT/$REPO"
+       curl -X POST -d "$JSON_DATA" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
    else
        echo "USER CREDS! $GITHUB_USERNAME"
-       curl -u "$CREDS" -X POST -d "$JSON_DATA" "https://api.github.com/repos/:$ACCOUNT/$REPO"
+       curl -u "$CREDS" -X POST -d "$JSON_DATA" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
    fi
    if [ $? != 0 ] ; then
       echo "Failed while pushing new tag."
