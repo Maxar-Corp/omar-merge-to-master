@@ -43,7 +43,6 @@ function tagRepo {
    if [ $? != 0 ] ; then
       echo "Failed while pushing new tag."
    fi
-   popd > /dev/null
    rm -rf $REPO
 }
 
