@@ -71,7 +71,6 @@ done
 
 checkGitURLsAndCreds
 TAG_DESCRIPTION="N/A"
-checkReleaseInfo
 
 echo TAG_RELEASE_NAME = $TAG_RELEASE_NAME
 
