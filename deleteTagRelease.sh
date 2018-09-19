@@ -3,8 +3,7 @@
 # Deletes tag from all O2 Github repositories.
 # Expected in environment, will be prompted if not provided:
 #
-#    RELEASE_NAME
-#    VERSION_TAG
+#    TAG_RELEASE_NAME
 #    GITHUB_USERNAME
 #    GITHUB_PASSWORD
 
@@ -24,8 +23,7 @@ usage() {
    echo "Options:"
    echo
    echo "  -h, --help              Prints usage. "
-   echo "  --release-name <name>   Release Name, e.g., \"Hollywood\"."
-   echo "  --tag <version>         Version tag, e.g. \"2.4.0\"."
+   echo "  --tag <version>         tag to delete, e.g. \"Hollywood-2.4.0\"."
    echo
    exit 1;
 }
@@ -64,8 +62,7 @@ popd >/dev/null
 while [ $# -gt 0 ]; do
    case $1 in
       -h|--help) usage ;;
-      --release-name) RELEASE_NAME=${2} ; shift ;;
-      --tag) VERSION_TAG=${2} ; shift ;;
+      --tag) TAG_RELEASE_NAME=${2} ; shift ;;
       --) break ;;
       -*|--*) echo "$0: ERROR - unrecognized option $1" 1>&2; usage ;;
    esac
@@ -76,7 +73,6 @@ checkGitURLsAndCreds
 TAG_DESCRIPTION="N/A"
 checkReleaseInfo
 
-TAG_RELEASE_NAME=${RELEASE_NAME}-${VERSION_TAG}
 echo TAG_RELEASE_NAME = $TAG_RELEASE_NAME
 
 for repo in $RADIANTBLUE_REPOS ; do
