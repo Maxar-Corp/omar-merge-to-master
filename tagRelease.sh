@@ -44,9 +44,11 @@ function tagRepo {
    fi
    echo; echo "Tagging $repo... "
    if [ -z $CREDS ] ; then
+       echo curl -X POST -d "$JSON_DATA" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
        curl -X POST -d "$JSON_DATA" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
    else
        echo "USER CREDS! $GITHUB_USERNAME"
+       echo curl -u "$CREDS" -X POST -d "$JSON_DATA" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
        curl -u "$CREDS" -X POST -d "$JSON_DATA" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
    fi
    if [ $? != 0 ] ; then
