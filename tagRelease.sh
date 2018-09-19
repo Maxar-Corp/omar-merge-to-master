@@ -101,11 +101,14 @@ JSON_DATA='{
 }'
 
 for repo in $RADIANTBLUE_REPOS ; do
-    tagRepo $GIT_PRIVATE_SERVER_URL $repo
+    #tagRepo $GIT_PRIVATE_SERVER_URL $repo
+    tagRepo radiantbluetechnologies $repo
 done
 
 for repo in $OSSIMLABS_REPOS ; do
-    tagRepo $GIT_PUBLIC_SERVER_URL $repo
+    #tagRepo $GIT_PUBLIC_SERVER_URL $repo
+    tagRepo ossimlabs $repo
 done
 
-tagRepo $GIT_PRIVATE_SERVER_URL omar
+#tagRepo $GIT_PRIVATE_SERVER_URL omar
+tagRepo  radiantbluetechnologies omar
