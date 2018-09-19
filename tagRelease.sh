@@ -39,7 +39,7 @@ function tagRepo {
    local REPO=$2
 
    echo; echo "Tagging $repo... "
-   curl -X POST -d $JSON_DATA https://api.github.com/repos/:$ACCOUNT/$REPO
+   curl -X POST -d "$JSON_DATA" "https://api.github.com/repos/:$ACCOUNT/$REPO"
    if [ $? != 0 ] ; then
       echo "Failed while pushing new tag."
    fi
