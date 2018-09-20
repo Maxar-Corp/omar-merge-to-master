@@ -40,7 +40,7 @@ function untagRepo {
    local DATA="{\"data\":$(curl -s -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" -X GET https://api.github.com/repos/${ACCOUNT}/${REPO}/releases) }"
    local RELEASE_ID=`echo "$DATA" | python getReleaseID.py $TAG_RELEASE_NAME `
    if [ -z "$RELEASE_ID" ]; then
-      echo "$TAG_RELEASE_NAME not found in ${OWNER}/${REPO}, skipping."
+      echo "$TAG_RELEASE_NAME not found in ${ACCOUNT}/${REPO}, skipping."
    else
       curl -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" -X DELETE "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases/${RELEASE_ID}"
       if [ $? != 0 ] ; then
