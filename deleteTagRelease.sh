@@ -35,11 +35,10 @@ function untagRepo {
    local REPO=$2
 
    echo; echo "Untagging $repo... "
-   curl -X DELETE /repos/$ACCOUNT/$REPO/releases/${TAG_RELEASE_NAME}
+   curl -X DELETE "https://api.github.com//repos/$ACCOUNT/$REPO/releases/${TAG_RELEASE_NAME}"
    if [ $? != 0 ] ; then
       echo "Failed while requesting tag deletion."
    fi
-
 }
 
 #-------------------------------------------------------------------------------------
@@ -63,6 +62,7 @@ done
 
 checkGitURLsAndCreds
 TAG_DESCRIPTION="N/A"
+checkReleaseInfo
 
 echo TAG_RELEASE_NAME = $TAG_RELEASE_NAME
 
