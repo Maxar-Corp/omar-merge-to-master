@@ -41,7 +41,7 @@ function untagRepo {
    echo; echo "Untagging $repo... "
    command="curl -u \"$CREDS\" -X DELETE https://api.github.com/repos/$ACCOUNT/$REPO/releases/${TAG_RELEASE_NAME}"
    echo $command
-   `$command`
+   $command
    exit
    if [ $? != 0 ] ; then
       echo "Failed while requesting tag deletion."
