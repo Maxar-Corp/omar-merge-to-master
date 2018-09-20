@@ -34,8 +34,12 @@ function untagRepo {
    local ACCOUNT=$1
    local REPO=$2
 
+   if [ ! -z $GITHUB_USERNAME ] ; then
+     CREDS="$GITHUB_USERNAME:$GITHUB_PASSWORD"
+   fi
+
    echo; echo "Untagging $repo... "
-   curl -X DELETE "https://api.github.com//repos/$ACCOUNT/$REPO/releases/${TAG_RELEASE_NAME}"
+   curl -u "$CREDS" -X DELETE "https://api.github.com//repos/$ACCOUNT/$REPO/releases/${TAG_RELEASE_NAME}"
    if [ $? != 0 ] ; then
       echo "Failed while requesting tag deletion."
       exit 1;
