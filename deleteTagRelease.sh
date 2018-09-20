@@ -38,6 +38,7 @@ function untagRepo {
    curl -X DELETE "https://api.github.com//repos/$ACCOUNT/$REPO/releases/${TAG_RELEASE_NAME}"
    if [ $? != 0 ] ; then
       echo "Failed while requesting tag deletion."
+      exit 1;
    fi
 }
 
