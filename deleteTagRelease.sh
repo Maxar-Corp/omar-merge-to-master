@@ -34,18 +34,20 @@ function untagRepo {
    local ACCOUNT=$1
    local REPO=$2
 
-   if [ ! -z $GITHUB_USERNAME ] ; then
-     CREDS="$GITHUB_USERNAME:$GITHUB_PASSWORD"
-   fi
-
    echo; echo "Untagging $repo... "
-   command="curl -u \"$CREDS\" -X DELETE https://api.github.com/repos/$ACCOUNT/$REPO/releases/${TAG_RELEASE_NAME}"
-   echo $command
-   $command
-   exit
-   if [ $? != 0 ] ; then
-      echo "Failed while requesting tag deletion."
-      exit 1;
+
+ # Extract the ID of the tag to be removed:
+   local DATA="{\"data\":$(curl -s -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" -X GET https://api.github.com/repos/${ACCOUNT}/${REPO}/releases) }"
+   local RELEASE_ID=`echo "$DATA" | python getReleaseID.py $TAG_RELEASE_NAME `
+   if [ -z "$RELEASE_ID" ]; then
+      echo "$TAG_RELEASE_NAME not found in ${OWNER}/${REPO}, skipping."
+   else
+      curl -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" -X DELETE "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases/${RELEASE_ID}"
+      if [ $? != 0 ] ; then
+         echo "Failed while requesting tag deletion."
+         exit 1;
+      fi
+      echo "$TAG_RELEASE_NAME (id=$RELEASE_ID) removed from ${ACCOUNT}/${REPO}."
    fi
 }
 
@@ -85,4 +87,4 @@ for repo in $OSSIMLABS_REPOS ; do
   fi
 done
 
-untagRepo $GIT_PRIVATE_SERVER_URL omar
+untagRepo radiantbluetechnologies omar
