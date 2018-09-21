@@ -37,24 +37,33 @@ usage() {
 function tagRepo {
    local ACCOUNT=$1
    local REPO=$2
+   local response=""
+   local CREDS=""
 
-   CREDS=""
    if [ ! -z $GITHUB_USERNAME ] ; then
      CREDS="$GITHUB_USERNAME:$GITHUB_PASSWORD"
    fi
    echo; echo "Tagging $repo... "
    if [ -z $CREDS ] ; then
-       echo "No credentials specified, any attempted POSTs will fail!"
-       exit 1
+      echo "Tagging without credentials..."
+      echo -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
+      response=`curl -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"`
    else
-       echo "USER CREDS! $GITHUB_USERNAME"
+       echo "Using credentials for $GITHUB_USERNAME"
        echo curl -u "$CREDS" -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
-       curl -u "$CREDS" -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
+       response=`curl -u "$CREDS" -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"`
    fi
    if [ $? != 0 ] ; then
-      echo "Failed while pushing new tag."
+      echo; echo "Failed while pushing new tag."; echo
+      NOT_FOUND=true
    fi
-   rm -rf $REPO
+
+   echo $response
+   local grep_response=`echo $response | grep "\"message\": \"Not Found\""`
+   if [ -n "$grep_response" ]; then
+      echo; echo "Failed while pushing new tag (not found error)."; echo
+      NOT_FOUND=true
+   fi
 }
 
 #-------------------- MAIN SCRIPT SECTION ---------------------------------------
@@ -100,6 +109,8 @@ JSON_DATA="{
    \"prerelease\": false
 }"
 
+NOT_FOUND=false
+
 for repo in $RADIANTBLUE_REPOS ; do
     tagRepo radiantbluetechnologies $repo
 done
@@ -109,3 +120,8 @@ for repo in $OSSIMLABS_REPOS ; do
 done
 
 tagRepo  radiantbluetechnologies omar
+
+if $NOT_FOUND; then
+   echo; echo "FAILED: At least one repository failed to be tagged."; echo
+   exit 1
+fi
