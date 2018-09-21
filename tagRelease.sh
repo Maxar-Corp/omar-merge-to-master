@@ -47,18 +47,18 @@ function tagRepo {
    if [ -z $CREDS ] ; then
       echo "Tagging without credentials..."
       echo -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
-      response=`curl -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"`
+      response=`curl -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases" 2>/dev/null`
    else
        echo "Using credentials for $GITHUB_USERNAME"
        echo curl -u "$CREDS" -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"
-       response=`curl -u "$CREDS" -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases"`
+       response=`curl -u "$CREDS" -X POST -d "${JSON_DATA}" "https://api.github.com/repos/$ACCOUNT/$REPO/releases" 2>/dev/null`
    fi
    if [ $? != 0 ] ; then
       echo; echo "Failed while pushing new tag."; echo
       NOT_FOUND=true
    fi
 
-   echo $response
+   echo "$response"
    local grep_response=`echo $response | grep "\"message\": \"Not Found\""`
    if [ -n "$grep_response" ]; then
       echo; echo "Failed while pushing new tag (not found error)."; echo
