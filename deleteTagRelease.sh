@@ -36,19 +36,28 @@ function untagRepo {
 
    echo; echo "Untagging $repo... "
 
- # Extract the ID of the tag to be removed:
-   local DATA="{\"data\":$(curl -s -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" -X GET https://api.github.com/repos/${ACCOUNT}/${REPO}/releases) }"
-   local RELEASE_ID=`echo "$DATA" | python getReleaseID.py $TAG_RELEASE_NAME `
+   # Extract the ID of the release to be removed:
+   local DATA1="{\"data\":$(curl -s -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" -X GET https://api.github.com/repos/${ACCOUNT}/${REPO}/releases) }"
+   local RELEASE_ID=`echo "$DATA1" | python getReleaseID.py $TAG_RELEASE_NAME `
    if [ -z "$RELEASE_ID" ]; then
       echo "$TAG_RELEASE_NAME not found in ${ACCOUNT}/${REPO}, skipping."
    else
       curl -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" -X DELETE "https://api.github.com/repos/${ACCOUNT}/${REPO}/releases/${RELEASE_ID}"
       if [ $? != 0 ] ; then
-         echo "Failed while requesting tag deletion."
+         echo "Failed while requesting release teg deletion."
          exit 1;
       fi
-      echo "$TAG_RELEASE_NAME (id=$RELEASE_ID) removed from ${ACCOUNT}/${REPO}."
    fi
+
+   # Now remove the corresponding tag reference as well:
+   curl -u "$GITHUB_USERNAME:$GITHUB_PASSWORD" -X DELETE "https://api.github.com/repos/${ACCOUNT}/${REPO}/git/refs/tags/${TAG_RELEASE_NAME}"
+   if [ $? != 0 ] ; then
+      echo "Failed while requesting tag reference deletion."
+      exit 1;
+   fi
+
+   echo "$TAG_RELEASE_NAME (id=$RELEASE_ID) removed from ${ACCOUNT}/${REPO}."
+
 }
 
 #-------------------------------------------------------------------------------------
