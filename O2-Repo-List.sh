@@ -8,7 +8,8 @@ ossim_kakadu_jpip_server \
 ossim-isa \
 ossim-msp-plugin \
 ossim-ci \
-ossim-private")
+ossim-private \
+omar-blink")
 
 OSSIMLABS_REPOS=("\
 omar \
