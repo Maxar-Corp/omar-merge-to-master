@@ -8,7 +8,7 @@ if [ -e branches.txt ] ; then
     rm branches.txt
 fi
 
-for repo in $RADIANTBLUE_REPOS ; do
+for repo in $MAXAR_CORP_REPOS ; do
   if [ -e $repo ] ; then
     cd $repo
     git for-each-ref --format="%(authorname) %09 $repo %09 %(refname) %09 %(committerdate)" | grep remotes | grep -v origin/HEAD | grep -v origin/dev | grep -v origin/master >> ../branches.txt

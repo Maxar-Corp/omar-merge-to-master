@@ -1,4 +1,4 @@
-RADIANTBLUE_REPOS=("\
+MAXAR_CORP_REPOS=("\
 config-repo \
 isa-ui \
 oc2s-metrics-dashboards \

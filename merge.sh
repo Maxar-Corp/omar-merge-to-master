@@ -54,7 +54,7 @@ mkdir repositories
 pushd repositories
 
 echo "ABOUT TO CHECKOUT REPOS"
-for repo in $RADIANTBLUE_REPOS ; do
+for repo in $MAXAR_CORP_REPOS ; do
   if [ ! -e $repo ] ; then
     cloneRepo $GIT_PRIVATE_SERVER_URL $repo $repo
   fi
@@ -67,11 +67,11 @@ for repo in $OSSIMLABS_REPOS ; do
 done
 
 #if [ ! -e oldmar ] ; then
-#    cloneRepo $RADIANTBLUE_URL omar oldmar
+#    cloneRepo $MAXAR_CORP_URL omar oldmar
 #fi
 
 
-mergeToMaster "${RADIANTBLUE_REPOS[@]}"
+mergeToMaster "${MAXAR_CORP_REPOS[@]}"
 mergeToMaster "${OSSIMLABS_REPOS[@]}"
 popd
 #mergeToMaster "oldmar"

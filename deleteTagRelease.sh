@@ -84,9 +84,9 @@ TAG_DESCRIPTION="N/A"
 
 echo TAG_RELEASE_NAME = $TAG_RELEASE_NAME
 
-for repo in $RADIANTBLUE_REPOS ; do
+for repo in $MAXAR_CORP_REPOS ; do
   if [ ! -e $repo ] ; then
-    untagRepo radiantbluetechnologies $repo
+    untagRepo Maxar-Corp $repo
   fi
 done
 
@@ -96,4 +96,4 @@ for repo in $OSSIMLABS_REPOS ; do
   fi
 done
 
-untagRepo radiantbluetechnologies omar
+untagRepo Maxar-Corp omar

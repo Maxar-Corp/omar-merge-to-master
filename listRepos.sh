@@ -2,7 +2,7 @@
 #
 # Script assigns the globals
 #
-#     RADIANTBLUE_REPOS
+#     MAXAR_CORP_REPOS
 #     OSSIMLABS_REPOS
 #
 #  Will be prompted if not provided:
@@ -30,9 +30,9 @@ popd >/dev/null
 
 checkGitURLsAndCreds
 
-rbt_repos_json=`curl -s -u $GITHUB_USERNAME:$GITHUB_PASSWORD "https://api.github.com/orgs/radiantbluetechnologies/repos?type='all',per_page=500"`
+rbt_repos_json=`curl -s -u $GITHUB_USERNAME:$GITHUB_PASSWORD "https://api.github.com/orgs/Maxar-Corp/repos?type='all',per_page=500"`
 RBT_REPOS=("`echo "$rbt_repos_json" | python -c "$pythonScript"`")
-echo; echo "In radiantbluetechnologies:"
+echo; echo "In Maxar-Corp:"
 for repo in $RBT_REPOS ; do
    echo "  $repo"
 done

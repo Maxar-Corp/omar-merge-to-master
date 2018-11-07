@@ -28,7 +28,7 @@ function checkGitURLsAndCreds {
          GIT_PUBLIC_SERVER_URL="git@github.com:ossimlabs"
       fi
       if [ -z "$GIT_PRIVATE_SERVER_URL" ]; then
-         GIT_PRIVATE_SERVER_URL="git@github.com:radiantbluetechnologies"
+         GIT_PRIVATE_SERVER_URL="git@github.com:Maxar-Corp"
       fi
    fi
 }

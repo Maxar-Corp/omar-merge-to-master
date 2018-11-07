@@ -111,15 +111,15 @@ JSON_DATA="{
 
 NOT_FOUND=false
 
-for repo in $RADIANTBLUE_REPOS ; do
-    tagRepo radiantbluetechnologies $repo
+for repo in $MAXAR_CORP_REPOS ; do
+    tagRepo Maxar-Corp $repo
 done
 
 for repo in $OSSIMLABS_REPOS ; do
     tagRepo ossimlabs $repo
 done
 
-tagRepo  radiantbluetechnologies omar
+tagRepo  Maxar-Corp omar
 
 if $NOT_FOUND; then
    echo; echo "FAILED: At least one repository failed to be tagged."; echo
