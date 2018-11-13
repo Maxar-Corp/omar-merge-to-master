@@ -1,12 +1,9 @@
 MAXAR_CORP_REPOS=("\
 config-repo \
-isa-ui \
 oc2s-metrics-dashboards \
 o2-paas \
 omar-merge-to-master \
 ossim_kakadu_jpip_server \
-ossim-isa \
-ossim-msp-plugin \
 ossim-ci \
 ossim-private \
 omar-blink")
