@@ -35,10 +35,12 @@ function cloneRepo {
   echo repoUrl=$repoUrl
   echo repo=$repo
   echo target=$target
-  git clone $repoUrl/$repo $target
+  git clone $repoUrl/$repo $target $ccid
 }
 
 #-------------------------------------------------------------------------------------
+
+export ccid=$1 
 
 pushd `dirname ${BASH_SOURCE[0]}` >/dev/null
 . ./O2-Repo-List.sh
