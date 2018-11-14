@@ -35,7 +35,8 @@ function cloneRepo {
   echo repoUrl=$repoUrl
   echo repo=$repo
   echo target=$target
-  git clone $repoUrl/$repo $target
+  # git clone $repoUrl/$repo $target
+  git clone https://${GIT_USER}:${GIT_PASSWORD}@github.com/{GIT_USER}/$repo.git $target
 }
 
 #-------------------------------------------------------------------------------------
