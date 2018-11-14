@@ -1,7 +1,7 @@
 MAXAR_CORP_REPOS=("\
-config-repo \
 oc2s-metrics-dashboards \
 o2-paas \
+config-repo \
 omar-merge-to-master \
 ossim_kakadu_jpip_server \
 ossim-ci \
