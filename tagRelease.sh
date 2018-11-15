@@ -39,6 +39,8 @@ function tagRepo {
    local REPO=$2
    local response=""
    local CREDS=""
+   
+   echo "GITHUB_USERNAME=$GITHUB_USERNAME"
 
    if [ ! -z $GITHUB_USERNAME ] ; then
      CREDS="$GITHUB_USERNAME:$GITHUB_PASSWORD"
