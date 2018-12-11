@@ -113,9 +113,9 @@ JSON_DATA="{
 
 NOT_FOUND=false
 
-#for repo in $MAXAR_CORP_REPOS ; do
-#    tagRepo Maxar-Corp $repo
-#done
+for repo in $MAXAR_CORP_REPOS ; do
+    tagRepo Maxar-Corp $repo
+done
 
 for repo in $OSSIMLABS_REPOS ; do
     tagRepo ossimlabs $repo
