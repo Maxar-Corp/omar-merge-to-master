@@ -25,10 +25,10 @@ function checkGitURLsAndCreds {
    # Low-side defaults only used if GIT URLs not provided in environment
    if [ "$WWW_CONNECTED" == "true" ]; then
       if [ -z "$GIT_PUBLIC_SERVER_URL" ]; then
-         GIT_PUBLIC_SERVER_URL="https://github.com/ossimlabs"
+         GIT_PUBLIC_SERVER_URL="git@github.com:ossimlabs"
       fi
       if [ -z "$GIT_PRIVATE_SERVER_URL" ]; then
-         GIT_PRIVATE_SERVER_URL="https://github.com/Maxar-Corp"
+         GIT_PRIVATE_SERVER_URL="git@github.com:Maxar-Corp"
       fi
    fi
 }
