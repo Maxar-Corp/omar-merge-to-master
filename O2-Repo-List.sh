@@ -9,6 +9,7 @@ ossim-private \
 omar-blink")
 
 OSSIMLABS_REPOS=("\
+o2-pushbutton \
 omar \
 omar-admin-server \
 omar-avro \
@@ -30,6 +31,7 @@ omar-git-mirror \
 omar-hibernate-spatial \
 omar-ingest-metrics \
 omar-ingest-tests \
+omar-job-manager
 omar-jpip \
 omar-mapproxy \
 omar-mariadb \
