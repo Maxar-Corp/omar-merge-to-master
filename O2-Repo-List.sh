@@ -53,7 +53,6 @@ omar-scdf-stager \
 omar-scdf-sqs \
 omar-twofishes \
 omar-security \
-omar-security-plugin \
 omar-service-proxy \
 omar-services \
 omar-sqs \
